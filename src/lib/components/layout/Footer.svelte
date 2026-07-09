@@ -1,0 +1,89 @@
+<script lang="ts">
+	import { generateSimpleWhatsAppLink } from '$lib/utils/wsp';
+</script>
+
+<footer class="border-t border-brand-border bg-gray-950">
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+		<div class="grid gap-8 md:grid-cols-3">
+			<!-- Brand -->
+			<div>
+				<a href="/" class="flex items-center gap-2">
+					<svg
+						width="28"
+						height="28"
+						viewBox="0 0 36 36"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect x="2" y="2" width="32" height="32" rx="4" fill="#5B21B6" />
+						<rect x="5" y="5" width="26" height="26" rx="2" fill="none" stroke="#FACC15" stroke-width="1.5" />
+						<text x="18" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">T&S</text>
+					</svg>
+					<span class="text-lg font-bold text-white">
+						Timbres y Sellos <span class="text-brand-yellow">Saldías</span>
+					</span>
+				</a>
+				<p class="mt-3 text-sm leading-relaxed text-gray-400">
+					Timbres personalizados, sellos 3D y fechadores importados. Calidad artesanal para
+					tu negocio en la Región de Valparaíso.
+				</p>
+			</div>
+
+			<!-- Quick Links -->
+			<div>
+				<h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Enlaces</h3>
+				<ul class="space-y-2">
+					<li>
+						<a href="/catalogo" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Catálogo</a>
+					</li>
+					<li>
+						<a href="/nosotros" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Nosotros</a>
+					</li>
+					<li>
+						<a href="/contacto" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Contacto</a>
+					</li>
+					<li>
+						<a href="/galeria" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Galería</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Contact -->
+			<div>
+				<h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Contacto</h3>
+				<ul class="space-y-3">
+					<li>
+						<a
+							href={generateSimpleWhatsAppLink()}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-green-400"
+						>
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+							</svg>
+							+56 9 8813 4375
+						</a>
+					</li>
+					<li class="flex items-center gap-2 text-sm text-gray-400">
+						<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+						</svg>
+						contacto@tys-saldias.cl
+					</li>
+				</ul>
+				<div class="mt-4 rounded-lg bg-brand-card p-3">
+					<p class="text-xs font-medium text-brand-yellow">
+						🚚 Despacho gratis en Quilpué, Belloto y Villa Alemana
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-8 border-t border-brand-border pt-6 text-center">
+			<p class="text-xs text-gray-500">
+				&copy; 2024 Timbres y Sellos Saldías. Todos los derechos reservados.
+			</p>
+		</div>
+	</div>
+</footer>
