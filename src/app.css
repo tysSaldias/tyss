@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+	--color-brand-purple: #5B21B6;
+	--color-brand-yellow: #FACC15;
+	--color-brand-dark: #030712;
+	--color-brand-card: rgba(31, 41, 55, 0.5);
+	--color-brand-border: rgba(55, 65, 81, 0.5);
+}
+
+/* Base global styles */
+:root {
+	color-scheme: dark;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #111827;
+	color: #e5e7eb;
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+	background-color: #5B21B6;
+	color: #ffffff;
+}
