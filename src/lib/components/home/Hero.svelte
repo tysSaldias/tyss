@@ -3,11 +3,11 @@
 
 <section class="relative overflow-hidden">
 	<!-- Background gradient -->
-	<div class="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-gray-900 to-gray-950" />
+	<div class="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-gray-900 to-gray-950"></div>
 
 	<!-- Decorative circles -->
-	<div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-brand-purple/10 blur-3xl" />
-	<div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-brand-yellow/5 blur-3xl" />
+	<div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-brand-purple/10 blur-3xl"></div>
+	<div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-brand-yellow/5 blur-3xl"></div>
 
 	<div class="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 sm:px-6 sm:py-32 lg:flex-row lg:py-40">
 		<!-- Text content -->

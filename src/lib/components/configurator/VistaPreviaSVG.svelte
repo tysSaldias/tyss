@@ -13,6 +13,6 @@
 		<div
 			class="mx-auto"
 			innerHTML={svgContent}
-		/>
+		></div>
 	</div>
 </div>
