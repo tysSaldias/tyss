@@ -10,12 +10,12 @@
 
 	let { product }: { product: Product } = $props();
 
-	let config = $state<StampConfig>(() => ({
+	let config = $state<StampConfig>({
 		text: '',
 		fontType: 'sans',
 		colorId: product.availableColors[0] ?? colores[0].id,
 		sizeId: product.availableSizes[1] ?? tamanos[1].id,
-	}));
+	});
 
 	const selectedColor = $derived(colores.find((c) => c.id === config.colorId));
 	const selectedSize = $derived(tamanos.find((s) => s.id === config.sizeId));

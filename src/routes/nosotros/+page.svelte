@@ -20,19 +20,18 @@
 		<h1 class="text-4xl font-bold text-white">Nuestra Historia</h1>
 		<div class="mx-auto mt-6 max-w-2xl space-y-4 text-left leading-relaxed text-gray-300">
 			<p>
-				Timbres y Sellos Saldías nació del sueño de dos hermanos de Quilpué que vieron la
-				necesidad de ofrecer timbres personalizados de calidad artesanal en la Región de
-				Valparaíso. Lo que comenzó como un pequeño taller familiar, hoy es un servicio
-				confiable para decenas de empresas, profesionales y emprendedores.
+				En Timbres y Sellos Saldías cada timbre se fabrica con pasión por el diseño y
+				compromiso con la calidad. Desde el taller en Quilpué, seleccionamos los
+				mejores materiales y revisamos cada detalle para que cada pedido sea único.
 			</p>
 			<p>
-				Creemos en el trabajo bien hecho, en la atención cercana y en que cada timbre
-				cuenta una historia. Por eso cada pedido es único: lo diseñamos, armamos y
-				revisamos personalmente antes de entregarlo.
+				Creemos en el trabajo bien hecho, en la personalización total y en que un
+				buen timbre dice mucho de quien lo usa. Por eso cada encargo se trata con
+				el cuidado que merece, de principio a fin.
 			</p>
 			<p>
-				Atendemos todo Quilpué, Villa Alemana y Belloto con despacho gratis, y hacemos
-				envíos a toda Chile por pagos contra entrega o transferencia.
+				Atendemos todo Quilpué, Villa Alemana y Belloto con despacho gratis, y
+				realizamos envíos a toda Chile por transferencia o factura.
 			</p>
 		</div>
 	</div>
