@@ -1,42 +1,25 @@
-# sv
+# Timbres y Sellos Saldías — Sitio Web
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Código fuente del sitio web de **Timbres y Sellos Saldías**, una pyme familiar en Chile dedicada a la fabricación artesanal de timbres personalizados, sellos 3D y fechadores importados.
 
-## Creating a project
+## ¿Dónde está publicado?
 
-If you're seeing this, you've probably already done this step. Congrats!
+El sitio está hosteado en **Netlify**. Apenas lo conectes, acá va el link:
 
-```sh
-# create a new project
-npx sv create my-app
-```
+> https://[nombre-del-sitio].netlify.app
 
-To recreate this project with the same configuration:
+## ¿Qué hay acá?
 
-```sh
-# recreate this project
-npx sv@0.16.2 create --template minimal --types ts --install npm .
-```
+Este repositorio guarda **todo el código del sitio**: las páginas, los productos, el catálogo, el configurador de timbres, y todo lo que ves en la web. Si en algún momento hay que cambiar algo (precios, textos, agregar productos), desde acá se hacen las modificaciones.
 
-## Developing
+## ¿Y cómo lo veo?
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+El sitio se ve desde el link de Netlify. No hace falta tener nada instalado ni saber de programación para verlo.
 
-```sh
-npm run dev
+## Mantención
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+**Tyto** (ProbeConstructor) es quien maneja los cambios técnicos. Cualquier actualización, corrección o mejora se coordina con él.
 
-## Building
+---
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+*Timbres personalizados, sellos 3D y fechadores importados — Calidad artesanal para tu negocio en Quilpue, Villa Alemana y Belloto.*
