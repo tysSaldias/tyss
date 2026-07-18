@@ -177,10 +177,30 @@
 						</li>
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">📍</span>
-							<span><strong class="text-gray-200">Dirección:</strong> Próximamente</span>
+							<span><strong class="text-gray-200">Dirección:</strong> Av. Valparaíso 1311, Villa Alemana, Valparaíso</span>
 						</li>
 					</ul>
 				</div>
+			</div>
+		</div>
+
+		<!-- Mapa -->
+		<div class="mt-10 rounded-xl bg-brand-card p-6">
+			<h2 class="text-lg font-semibold text-white">Ubicación</h2>
+			<p class="mt-2 text-sm text-gray-400">
+				Encuéntranos en Av. Valparaíso 1311, Villa Alemana.
+			</p>
+			<div class="mt-4 overflow-hidden rounded-lg">
+				<iframe
+					src="https://maps.google.com/maps?q=Avenida+Valparaiso+1311,+Villa+Alemana,+Valparaiso&t=&z=17&ie=UTF8&iwloc=&output=embed"
+					width="100%"
+					height="350"
+					style="border:0;"
+					allowfullscreen
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					title="Mapa de ubicación - Av. Valparaíso 1311, Villa Alemana"
+				></iframe>
 			</div>
 		</div>
 	</div>
