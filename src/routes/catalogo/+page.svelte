@@ -13,9 +13,9 @@
 </script>
 
 <svelte:head>
-	<title>Catálogo | Timbres y Sellos Saldías</title>
+	<title>Catálogo | Timbres y Sellos Saldias</title>
 	<meta name="description" content="Explora nuestro catálogo de timbres personalizados, sellos 3D y fechadores importados. Calidad artesanal para tu negocio en la Región de Valparaíso." />
-	<meta property="og:title" content="Catálogo | Timbres y Sellos Saldías" />
+	<meta property="og:title" content="Catálogo | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Explora nuestro catálogo de timbres personalizados, sellos 3D y fechadores importados." />
 	<meta property="og:url" content="https://tys-saldias.cl/catalogo" />
 </svelte:head>

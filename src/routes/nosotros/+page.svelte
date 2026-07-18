@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Nosotros | Timbres y Sellos Saldías</title>
-	<meta name="description" content="Conoce la historia de Timbres y Sellos Saldías, un emprendimiento familiar de hermanos en Quilpué. Calidad artesanal, atención personalizada y despacho gratis en la región." />
-	<meta property="og:title" content="Nosotros | Timbres y Sellos Saldías" />
-	<meta property="og:description" content="Conoce la historia de Timbres y Sellos Saldías, un emprendimiento familiar de hermanos." />
+	<title>Nosotros | Timbres y Sellos Saldias</title>
+	<meta name="description" content="Conoce la historia de Timbres y Sellos Saldias, un emprendimiento familiar de hermanos en Quilpué. Calidad artesanal, atención personalizada y despacho gratis en la región." />
+	<meta property="og:title" content="Nosotros | Timbres y Sellos Saldias" />
+	<meta property="og:description" content="Conoce la historia de Timbres y Sellos Saldias, un emprendimiento familiar de hermanos." />
 	<meta property="og:url" content="https://tys-saldias.cl/nosotros" />
 </svelte:head>
 
@@ -20,7 +20,7 @@
 		<h1 class="text-4xl font-bold text-white">Nuestra Historia</h1>
 		<div class="mx-auto mt-6 max-w-2xl space-y-4 text-left leading-relaxed text-gray-300">
 			<p>
-				En Timbres y Sellos Saldías cada timbre se fabrica con pasión por el diseño y
+				En Timbres y Sellos Saldias cada timbre se fabrica con pasión por el diseño y
 				compromiso con la calidad. Desde el taller en Quilpué, seleccionamos los
 				mejores materiales y revisamos cada detalle para que cada pedido sea único.
 			</p>
@@ -90,7 +90,7 @@
 		<div class="overflow-hidden rounded-xl">
 			<img
 				src="https://placehold.co/600x400/5B21B6/FFFFFF?text=Nuestro+Taller&font=raleway"
-				alt="Taller de Timbres y Sellos Saldías"
+				alt="Taller de Timbres y Sellos Saldias"
 				class="h-full w-full object-cover"
 				width="600"
 				height="400"

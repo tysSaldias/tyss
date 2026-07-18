@@ -23,21 +23,15 @@
 	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
 		<!-- Logo -->
 		<a href="/" class="flex items-center gap-3" onclick={closeMenu}>
-			<!-- Stamp-style SVG logo -->
-			<svg
+			<img
+				src="/assets/favicon.png"
+				alt="Timbres y Sellos Saldias"
 				width="36"
 				height="36"
-				viewBox="0 0 36 36"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
 				class="shrink-0"
-			>
-				<rect x="2" y="2" width="32" height="32" rx="4" fill="#5B21B6" />
-				<rect x="5" y="5" width="26" height="26" rx="2" fill="none" stroke="#FACC15" stroke-width="1.5" />
-				<text x="18" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">T&S</text>
-			</svg>
+			/>
 			<span class="hidden text-lg font-bold text-white sm:block">
-				Timbres y Sellos <span class="text-brand-yellow">Saldías</span>
+				Timbres y Sellos <span class="text-brand-yellow">Saldias</span>
 			</span>
 		</a>
 

@@ -22,9 +22,9 @@
 </script>
 
 <svelte:head>
-	<title>Galería | Timbres y Sellos Saldías</title>
-	<meta name="description" content="Galería de trabajos realizados: timbres personalizados, sellos 3D y fechadores. Mira la calidad artesanal de Timbres y Sellos Saldías." />
-	<meta property="og:title" content="Galería | Timbres y Sellos Saldías" />
+	<title>Galería | Timbres y Sellos Saldias</title>
+	<meta name="description" content="Galería de trabajos realizados: timbres personalizados, sellos 3D y fechadores. Mira la calidad artesanal de Timbres y Sellos Saldias." />
+	<meta property="og:title" content="Galería | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Galería de trabajos realizados: timbres personalizados, sellos 3D y fechadores." />
 	<meta property="og:url" content="https://tys-saldias.cl/galeria" />
 </svelte:head>

@@ -20,7 +20,7 @@
 						<text x="18" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">T&S</text>
 					</svg>
 					<span class="text-lg font-bold text-white">
-						Timbres y Sellos <span class="text-brand-yellow">Saldías</span>
+						Timbres y Sellos <span class="text-brand-yellow">Saldias</span>
 					</span>
 				</a>
 				<p class="mt-3 text-sm leading-relaxed text-gray-400">
@@ -82,7 +82,7 @@
 
 		<div class="mt-8 border-t border-brand-border pt-6 text-center">
 			<p class="text-xs text-gray-500">
-				&copy; 2024 Timbres y Sellos Saldías. Todos los derechos reservados.
+				&copy; 2024 Timbres y Sellos Saldias. Todos los derechos reservados.
 			</p>
 		</div>
 	</div>

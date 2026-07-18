@@ -15,7 +15,7 @@
 			<h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
 				Timbres y Sellos
 				<br />
-				<span class="text-brand-yellow">Saldías</span>
+				<span class="text-brand-yellow">Saldias</span>
 			</h1>
 			<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-gray-300 sm:text-xl lg:mx-0">
 				Timbres personalizados, sellos 3D y fechadores importados. Calidad artesanal para tu
@@ -40,15 +40,15 @@
 			</div>
 		</div>
 
-		<!-- Hero image placeholder -->
+		<!-- Hero image -->
 		<div class="flex-1">
 			<div class="aspect-[3/2] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple/40 to-brand-yellow/20 shadow-2xl shadow-brand-purple/20">
 				<img
-					src="https://placehold.co/600x400/5B21B6/FFFFFF?text=Timbres+y+Sellos+Sald%C3%ADas&font=raleway"
-					alt="Timbres y Sellos Saldías"
-					class="h-full w-full object-cover"
-					width="600"
-					height="400"
+					src="/assets/hero-logo.png"
+					alt="Timbres y Sellos Saldias - Logo"
+					class="h-full w-full object-contain p-4"
+					width="1200"
+					height="800"
 					loading="eager"
 				/>
 			</div>

@@ -8,9 +8,9 @@
 </script>
 
 <svelte:head>
-	<title>{product?.name ?? 'Producto no encontrado'} | Timbres y Sellos Saldías</title>
+	<title>{product?.name ?? 'Producto no encontrado'} | Timbres y Sellos Saldias</title>
 	<meta name="description" content={product?.description ? product.description.slice(0, 155) : 'Producto no encontrado en nuestro catálogo.'} />
-	<meta property="og:title" content="{product?.name ?? 'Producto'} | Timbres y Sellos Saldías" />
+	<meta property="og:title" content="{product?.name ?? 'Producto'} | Timbres y Sellos Saldias" />
 	<meta property="og:description" content={product?.description ? product.description.slice(0, 155) : ''} />
 	<meta property="og:url" content="https://tys-saldias.cl/producto/{params.slug}" />
 	{#if product}
