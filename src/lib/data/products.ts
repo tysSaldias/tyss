@@ -122,7 +122,7 @@ export const products: Product[] = [
 		name: 'Tampón Manual',
 		description:
 			'Tampón de goma manual para marcar con tinta. Disponible en 6 tamaños: 40×40mm ($4.900), 70×70mm ($5.900), 90×90mm ($6.900), 100×100mm ($7.900), 120×120mm ($8.900) y 150×100mm ($10.900).',
-		category: 'timbre-personalizable',
+		category: 'timbre-importado',
 		basePrice: 4900,
 		images: ['/assets/products/Tampon.png'],
 		availableColors: [],
