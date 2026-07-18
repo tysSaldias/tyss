@@ -6,10 +6,10 @@
 
 	const categoryLabel = $derived(
 		product.category === 'timbre-personalizable'
-			? 'Personalizable'
+			? 'Timbre de Goma'
 			: product.category === 'sello-3d'
 				? 'Sello 3D'
-				: 'Importado'
+				: 'Accesorio'
 	);
 </script>
 

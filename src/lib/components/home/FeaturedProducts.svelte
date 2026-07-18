@@ -40,7 +40,7 @@
 				<h3 class="font-semibold text-white group-hover:text-brand-yellow">{product.name}</h3>
 				<p class="mt-1 text-sm text-gray-400">Desde {priceFormat(product.basePrice)}</p>
 				<span class="mt-2 inline-block rounded-full bg-brand-purple/20 px-3 py-0.5 text-xs font-medium text-brand-purple">
-					{product.category === 'timbre-personalizable' ? 'Personalizable' : product.category === 'sello-3d' ? 'Sello 3D' : 'Importado'}
+					{product.category === 'timbre-personalizable' ? 'Timbre de Goma' : product.category === 'sello-3d' ? 'Sello 3D' : 'Accesorio'}
 				</span>
 			</a>
 		{/each}

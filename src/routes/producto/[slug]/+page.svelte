@@ -55,16 +55,30 @@
 			<div>
 				<span class="inline-block rounded-full bg-brand-purple/20 px-3 py-1 text-xs font-medium text-brand-purple">
 					{product.category === 'timbre-personalizable'
-						? 'Timbre Personalizable'
+						? 'Timbre de Goma'
 						: product.category === 'sello-3d'
 							? 'Sello 3D'
-							: 'Importado'}
+							: 'Accesorio'}
 				</span>
 				<h1 class="mt-3 text-3xl font-bold text-white">{product.name}</h1>
 				<p class="mt-2 text-2xl font-bold text-brand-yellow">
 					Desde {priceFormat(product.basePrice)}
 				</p>
 				<p class="mt-4 leading-relaxed text-gray-300">{product.description}</p>
+
+				<!-- Sizes and prices -->
+				{#if product.availableSizes.length > 0}
+					<div class="mt-6">
+						<h3 class="mb-3 text-sm font-semibold text-gray-400">Medidas disponibles</h3>
+						<div class="flex flex-wrap gap-2">
+							{#each product.availableSizes as size}
+								<span class="rounded-lg bg-gray-800 px-3 py-1.5 text-sm text-gray-300">
+									{size}
+								</span>
+							{/each}
+						</div>
+					</div>
+				{/if}
 
 				<!-- Configurator for customizable products -->
 				{#if product.isCustomizable}

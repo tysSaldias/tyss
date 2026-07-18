@@ -11,9 +11,8 @@
 
 	const categories: { id: string; label: string }[] = [
 		{ id: 'todos', label: 'Todos' },
-		{ id: 'timbre-personalizable', label: 'Timbres Personalizables' },
-		{ id: 'sello-3d', label: 'Sellos 3D' },
-		{ id: 'timbre-importado', label: 'Importados' },
+		{ id: 'timbre-personalizable', label: 'Timbres de Goma' },
+		{ id: 'timbre-importado', label: 'Accesorios' },
 	];
 </script>
 
