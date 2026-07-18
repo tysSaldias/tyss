@@ -11,7 +11,7 @@ export const products: Product[] = [
 			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 4 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm) y XL40 (22×57mm). Ideal para documentos, facturas y correspondence.',
 		category: 'timbre-personalizable',
 		basePrice: 8900,
-		images: ['/assets/products/Timbre automatico.png'],
+		images: ['/assets/products/xl-702-64x40-portada.png'],
 		availableColors: [
 			'morado-oscuro', 'rojo', 'azul-rey', 'verde-esmeralda',
 			'negro', 'blanco', 'naranja', 'plateado', 'oro', 'cobrizo',
@@ -30,7 +30,7 @@ export const products: Product[] = [
 			'Timbre fechador automático con cinta entintada reemplazable. Disponible en XL703 (50×30mm) y XL704 (64×40mm). Marco de plástico reforzado con ventana para visualizar la fecha.',
 		category: 'timbre-personalizable',
 		basePrice: 31500,
-		images: ['/assets/products/xl-702-64x40-portada.png'],
+		images: ['/assets/products/Timbre automatico.png'],
 		availableColors: [],
 		availableSizes: ['XL703', 'XL704'],
 		availableFonts: [],
