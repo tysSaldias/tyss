@@ -28,8 +28,18 @@
 		</nav>
 
 		<div class="grid gap-8 lg:grid-cols-2">
-			<!-- Image gallery -->
-			<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple/30 to-gray-800">
+		<!-- Image gallery -->
+		<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple/30 to-gray-800">
+			{#if product.images && product.images.length > 0}
+				<img
+					src={product.images[0]}
+					alt={product.name}
+					class="h-full w-full object-contain p-4"
+					width="600"
+					height="600"
+					loading="eager"
+				/>
+			{:else}
 				<img
 					src="https://placehold.co/600x600/5B21B6/FFFFFF?text={product.name.charAt(0)}&font=raleway"
 					alt={product.name}
@@ -38,7 +48,8 @@
 					height="600"
 					loading="eager"
 				/>
-			</div>
+			{/if}
+		</div>
 
 			<!-- Product info -->
 			<div>

@@ -8,17 +8,12 @@
 			<!-- Brand -->
 			<div>
 				<a href="/" class="flex items-center gap-2">
-					<svg
+					<img
+						src="/assets/favicon.png"
+						alt="Timbres y Sellos Saldias"
 						width="28"
 						height="28"
-						viewBox="0 0 36 36"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<rect x="2" y="2" width="32" height="32" rx="4" fill="#5B21B6" />
-						<rect x="5" y="5" width="26" height="26" rx="2" fill="none" stroke="#FACC15" stroke-width="1.5" />
-						<text x="18" y="22" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">T&S</text>
-					</svg>
+					/>
 					<span class="text-lg font-bold text-white">
 						Timbres y Sellos <span class="text-brand-yellow">Saldias</span>
 					</span>
