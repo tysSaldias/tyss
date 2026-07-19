@@ -2,6 +2,7 @@
 	import Hero from '$lib/components/home/Hero.svelte';
 	import DespachoBanner from '$lib/components/home/DespachoBanner.svelte';
 	import FeaturedProducts from '$lib/components/home/FeaturedProducts.svelte';
+	import InstagramEmbed from '$lib/components/home/InstagramEmbed.svelte';
 	import CtaWhatsApp from '$lib/components/home/CtaWhatsApp.svelte';
 </script>
 
@@ -16,4 +17,5 @@
 <Hero />
 <DespachoBanner />
 <FeaturedProducts />
+<InstagramEmbed />
 <CtaWhatsApp />

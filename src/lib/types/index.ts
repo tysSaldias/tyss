@@ -16,6 +16,7 @@ export interface Product {
 	hasTextInput: boolean;
 	isActive: boolean;
 	featured: boolean;
+	comingSoon: boolean;
 	order: number;
 }
 

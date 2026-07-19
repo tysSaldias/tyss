@@ -17,7 +17,12 @@
 	href="/producto/{product.id}"
 	class="group flex flex-col overflow-hidden rounded-xl bg-brand-card transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-purple/10"
 >
-	<div class="aspect-square w-full overflow-hidden bg-gradient-to-br from-brand-purple/30 to-gray-800">
+	<div class="relative aspect-square w-full overflow-hidden bg-gradient-to-br from-brand-purple/30 to-gray-800">
+		{#if product.comingSoon}
+			<span class="absolute right-2 top-2 z-10 rounded-full bg-brand-yellow px-3 py-0.5 text-xs font-bold text-gray-900">
+				Próximamente
+			</span>
+		{/if}
 		{#if product.images && product.images.length > 0}
 			<img
 				src={product.images[0]}
@@ -43,8 +48,10 @@
 			{categoryLabel}
 		</span>
 		<h3 class="mt-1 font-semibold text-white group-hover:text-brand-yellow">{product.name}</h3>
-		<p class="mt-auto pt-2 text-sm text-gray-400">
-			Desde <span class="font-medium text-white">{priceFormat(product.basePrice)}</span>
-		</p>
+		{#if !product.comingSoon}
+			<p class="mt-auto pt-2 text-sm text-gray-400">
+				Desde <span class="font-medium text-white">{priceFormat(product.basePrice)}</span>
+			</p>
+		{/if}
 	</div>
 </a>

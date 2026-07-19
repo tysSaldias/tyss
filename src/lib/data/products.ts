@@ -27,6 +27,7 @@ export const products: Product[] = [
 		hasTextInput: true,
 		isActive: true,
 		featured: true,
+		comingSoon: false,
 		order: 1,
 	},
 	{
@@ -47,6 +48,7 @@ export const products: Product[] = [
 		hasTextInput: false,
 		isActive: true,
 		featured: true,
+		comingSoon: false,
 		order: 2,
 	},
 	{
@@ -70,6 +72,7 @@ export const products: Product[] = [
 		hasTextInput: true,
 		isActive: true,
 		featured: true,
+		comingSoon: false,
 		order: 3,
 	},
 	{
@@ -93,6 +96,7 @@ export const products: Product[] = [
 		hasTextInput: true,
 		isActive: true,
 		featured: false,
+		comingSoon: false,
 		order: 4,
 	},
 	{
@@ -114,6 +118,7 @@ export const products: Product[] = [
 		hasTextInput: true,
 		isActive: true,
 		featured: false,
+		comingSoon: false,
 		order: 5,
 	},
 
@@ -144,6 +149,7 @@ export const products: Product[] = [
 		hasTextInput: true,
 		isActive: true,
 		featured: true,
+		comingSoon: false,
 		order: 6,
 	},
 	{
@@ -168,6 +174,7 @@ export const products: Product[] = [
 		hasTextInput: false,
 		isActive: true,
 		featured: false,
+		comingSoon: false,
 		order: 7,
 	},
 
@@ -191,6 +198,7 @@ export const products: Product[] = [
 		hasTextInput: false,
 		isActive: true,
 		featured: false,
+		comingSoon: false,
 		order: 8,
 	},
 	{
@@ -210,7 +218,66 @@ export const products: Product[] = [
 		hasTextInput: false,
 		isActive: true,
 		featured: true,
+		comingSoon: false,
 		order: 9,
+	},
+
+	// ═══════════════════════════════════════════════════════════
+	// PRÓXIMAMENTE
+	// ═══════════════════════════════════════════════════════════
+	{
+		id: 'roller-documentos',
+		name: 'Roller Documentos',
+		description:
+			'Roller para documentos. Producto disponible próximamente.',
+		category: 'timbre-personalizable',
+		basePrice: 0,
+		images: [],
+		availableColors: [],
+		availableSizes: [],
+		availableFonts: [],
+		isCustomizable: false,
+		hasTextInput: false,
+		isActive: true,
+		featured: false,
+		comingSoon: true,
+		order: 10,
+	},
+	{
+		id: 'roller-packaging',
+		name: 'Roller Packaging',
+		description:
+			'Roller para packaging. Producto disponible próximamente.',
+		category: 'timbre-personalizable',
+		basePrice: 0,
+		images: [],
+		availableColors: [],
+		availableSizes: [],
+		availableFonts: [],
+		isCustomizable: false,
+		hasTextInput: false,
+		isActive: true,
+		featured: false,
+		comingSoon: true,
+		order: 11,
+	},
+	{
+		id: 'set-escolar',
+		name: 'Set Escolar',
+		description:
+			'Set de timbres escolares. Producto disponible próximamente.',
+		category: 'timbre-personalizable',
+		basePrice: 0,
+		images: [],
+		availableColors: [],
+		availableSizes: [],
+		availableFonts: [],
+		isCustomizable: false,
+		hasTextInput: false,
+		isActive: true,
+		featured: false,
+		comingSoon: true,
+		order: 12,
 	},
 ];
 
