@@ -10,9 +10,10 @@ export interface Product {
 	basePrice: number;
 	images: string[];
 	availableColors: string[];
-	availableSizes: string[];
+	availableSizes: SizeOption[];
 	availableFonts: FontType[];
 	isCustomizable: boolean;
+	hasTextInput: boolean;
 	isActive: boolean;
 	featured: boolean;
 	order: number;

@@ -1,12 +1,10 @@
 <script lang="ts">
-	import type { Product, StampConfig, FontType } from '$lib/types';
+	import type { Product, StampConfig } from '$lib/types';
 	import { colores } from '$lib/data/colores';
-	import { tamanos } from '$lib/data/tamanos';
 	import { priceFormat } from '$lib/data/products';
 	import { generateWhatsAppMessage } from '$lib/utils/wsp';
 	import SelectorColor from './SelectorColor.svelte';
 	import SelectorTamanio from './SelectorTamanio.svelte';
-	import VistaPreviaSVG from './VistaPreviaSVG.svelte';
 
 	let { product }: { product: Product } = $props();
 
@@ -14,11 +12,11 @@
 		text: '',
 		fontType: 'sans',
 		colorId: product.availableColors[0] ?? colores[0].id,
-		sizeId: product.availableSizes[1] ?? tamanos[1].id,
+		sizeId: product.availableSizes[0]?.id ?? '',
 	});
 
 	const selectedColor = $derived(colores.find((c) => c.id === config.colorId));
-	const selectedSize = $derived(tamanos.find((s) => s.id === config.sizeId));
+	const selectedSize = $derived(product.availableSizes.find((s) => s.id === config.sizeId));
 
 	const totalPrice = $derived(
 		product.basePrice +
@@ -28,13 +26,6 @@
 
 	const whatsappUrl = $derived(generateWhatsAppMessage(config, product));
 
-	const fontOptions: { id: FontType; label: string }[] = [
-		{ id: 'sans', label: 'Sans Serif' },
-		{ id: 'serif', label: 'Serif' },
-		{ id: 'script', label: 'Script' },
-		{ id: 'mono', label: 'Monoespaciada' },
-	];
-
 	function handleColorChange(colorId: string) {
 		config.colorId = colorId;
 	}
@@ -42,58 +33,39 @@
 	function handleSizeChange(sizeId: string) {
 		config.sizeId = sizeId;
 	}
-
-	function handleFontChange(e: Event) {
-		const target = e.target as HTMLSelectElement;
-		config.fontType = target.value as FontType;
-	}
 </script>
 
 <div class="grid gap-6 lg:grid-cols-2">
 	<!-- Controls -->
 	<div class="space-y-6">
 		<!-- Text input -->
-		<div>
-			<label for="stamp-text" class="mb-1 block text-sm font-medium text-gray-300">Texto</label>
-			<input
-				id="stamp-text"
-				type="text"
-				maxlength={50}
-				placeholder="Escribe tu texto"
-				bind:value={config.text}
-				class="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-white placeholder-gray-500 transition-colors focus:border-brand-purple focus:outline-none focus:ring-1 focus:ring-brand-purple"
-			/>
-			<p class="mt-1 text-right text-xs text-gray-500">{config.text.length}/50</p>
-		</div>
+		{#if product.hasTextInput}
+			<div>
+				<label for="stamp-text" class="mb-1 block text-sm font-medium text-gray-300">Texto</label>
+				<textarea
+					id="stamp-text"
+					maxlength={500}
+					rows={2}
+					placeholder="Describe lo que quieres (un logo, frase o meme)"
+					bind:value={config.text}
+					class="w-full resize-none rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-white placeholder-gray-500 transition-colors focus:border-brand-purple focus:outline-none focus:ring-1 focus:ring-brand-purple"
+				></textarea>
+				<p class="mt-1 text-right text-xs text-gray-500">{config.text.length}/500</p>
+			</div>
+		{/if}
 
-		<!-- Font selector -->
-		<div>
-			<label for="stamp-font" class="mb-1 block text-sm font-medium text-gray-300">Fuente</label>
-			<select
-				id="stamp-font"
-				onchange={handleFontChange}
-				class="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-white transition-colors focus:border-brand-purple focus:outline-none focus:ring-1 focus:ring-brand-purple"
-			>
-				{#each fontOptions as opt}
-					<option value={opt.id} selected={config.fontType === opt.id}>{opt.label}</option>
-				{/each}
-			</select>
-		</div>
-
-		<!-- Color selector -->
+		<!-- Color selector (comentado temporalmente)
 		<div>
 			<p class="mb-2 text-sm font-medium text-gray-300">Color</p>
 			<SelectorColor colors={colores} selected={config.colorId} onChange={handleColorChange} />
-			{#if selectedColor?.isPremium}
-				<p class="mt-1 text-xs text-brand-yellow">* Color premium tiene un costo adicional de {priceFormat(2000)}</p>
-			{/if}
 		</div>
+		-->
 
 		<!-- Size selector -->
 		<div>
 			<p class="mb-2 text-sm font-medium text-gray-300">Tamaño</p>
 			<SelectorTamanio
-				sizes={tamanos}
+				sizes={product.availableSizes}
 				selected={config.sizeId}
 				basePrice={product.basePrice}
 				onChange={handleSizeChange}
@@ -101,10 +73,8 @@
 		</div>
 	</div>
 
-	<!-- Preview + Price + CTA -->
+	<!-- Price + CTA -->
 	<div class="space-y-6">
-		<VistaPreviaSVG {config} />
-
 		<div class="rounded-xl bg-gray-800/50 p-4">
 			<div class="flex items-center justify-between">
 				<span class="text-gray-400">Precio total estimado:</span>
@@ -114,6 +84,14 @@
 				{selectedColor?.isPremium ? 'Incluye recargo color premium' : 'Precio base + tamaño'}
 			</p>
 		</div>
+
+		<p class="text-sm text-gray-400">
+			{#if product.hasTextInput}
+				Escribe lo que quieres en el campo de texto, selecciona el tamaño y haz clic en el botón para cotizar por WhatsApp.
+			{:else}
+				Selecciona el tamaño y haz clic en el botón para cotizar por WhatsApp.
+			{/if}
+		</p>
 
 		<a
 			href={whatsappUrl}
