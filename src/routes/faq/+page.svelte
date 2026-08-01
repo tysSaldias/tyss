@@ -222,7 +222,7 @@
 				},
 				{
 					q: '¿Cuánto dura la tinta de un timbre?',
-					a: 'La duración de la tinta depende del uso y de la superficie donde estampes. Cuando la necesites, vendemos tinta especial para timbres de secado rápido (presentación de 29 cc) en negro, rojo y azul. Consulta por WhatsApp el repuesto para tu modelo.'
+					a: 'La duración depende del uso, pero en un timbre automático el mínimo es de 100 a 200 usos. La recarga se vende en formato de 29 cc; puedes revisar nuestro catálogo de productos y consultar por la reposición de tinta por WhatsApp.'
 				},
 				{
 					q: '¿Se puede recargar o cambiar la tinta de un timbre?',
@@ -278,11 +278,11 @@
 				},
 				{
 					q: '¿Ofrecen descuentos por cantidad?',
-					a: 'Para pedidos por cantidad, contáctanos por WhatsApp y te enviamos una cotización especial según el volumen. Te respondemos con el mejor precio para tu empresa.'
+					a: 'Sí, trabajamos precios al detalle y por mayor dependiendo de la cantidad de productos que necesites. Escríbenos por WhatsApp con tu requerimiento y te enviamos una cotización según el volumen.'
 				},
 				{
 					q: '¿Atienden instituciones públicas, colegios o municipalidades?',
-					a: 'Sí, atendemos pedidos de colegios, municipalidades e instituciones públicas, con emisión de factura y todo lo que necesites para tu trámite. Escríbenos por WhatsApp y coordinamos tu pedido institucional.'
+					a: 'No trabajamos con mercado público ni Chilecompra. Para empresas y particulares, en cambio, sí fabricamos timbres personalizados, fechadores y numeradores, y emitimos boleta o factura.'
 				},
 				{
 					q: '¿Hacen timbres para médicos, abogados, profesores o contadores?',
