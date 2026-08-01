@@ -59,7 +59,7 @@
 		property="og:description"
 		content="Política de garantía, cambios y devoluciones de Timbres y Sellos Saldias: productos personalizados, garantía por fallas de fabricación y derecho a retracto."
 	/>
-	<meta property="og:url" content="https://tys-saldias.cl/garantias" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/garantias" />
 </svelte:head>
 
 <!-- Hero -->

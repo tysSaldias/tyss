@@ -3,7 +3,7 @@
 	<meta name="description" content="Conoce la historia de Timbres y Sellos Saldias, un emprendimiento familiar de hermanos en Quilpué. Calidad artesanal, atención personalizada y despacho gratis en la región." />
 	<meta property="og:title" content="Nosotros | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Conoce la historia de Timbres y Sellos Saldias, un emprendimiento familiar de hermanos." />
-	<meta property="og:url" content="https://tys-saldias.cl/nosotros" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/nosotros" />
 </svelte:head>
 
 <!-- Hero section -->

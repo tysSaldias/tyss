@@ -14,9 +14,9 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Timbres y Sellos Saldias | Timbres y Sellos Personalizados" />
 	<meta property="og:description" content="Timbres personalizados, sellos 3D y fechadores importados en Quilpué, Villa Alemana y Belloto." />
-	<meta property="og:url" content="https://tys-saldias.cl" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app" />
 	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="https://tys-saldias.cl" />
+	<link rel="canonical" href="https://timbres-y-sellos-saldias.netlify.app" />
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-gray-900 text-gray-200">

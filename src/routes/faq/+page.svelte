@@ -345,7 +345,7 @@
 	/>
 	<meta property="og:title" content="Preguntas Frecuentes | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Resolvemos tus dudas sobre timbres y sellos personalizados: ubicación, envíos, pagos, productos y personalización." />
-	<meta property="og:url" content="https://tys-saldias.cl/faq" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/faq" />
 	{@html `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`}
 </svelte:head>
 

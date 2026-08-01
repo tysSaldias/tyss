@@ -12,7 +12,7 @@
 	<meta name="description" content={product?.description ? product.description.slice(0, 155) : 'Producto no encontrado en nuestro catálogo.'} />
 	<meta property="og:title" content="{product?.name ?? 'Producto'} | Timbres y Sellos Saldias" />
 	<meta property="og:description" content={product?.description ? product.description.slice(0, 155) : ''} />
-	<meta property="og:url" content="https://tys-saldias.cl/producto/{params.slug}" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/producto/{params.slug}" />
 	{#if product}
 		<meta property="og:type" content="product" />
 	{/if}

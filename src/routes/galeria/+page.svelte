@@ -26,7 +26,7 @@
 	<meta name="description" content="Galería de trabajos realizados: timbres personalizados, sellos 3D y fechadores. Mira la calidad artesanal de Timbres y Sellos Saldias." />
 	<meta property="og:title" content="Galería | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Galería de trabajos realizados: timbres personalizados, sellos 3D y fechadores." />
-	<meta property="og:url" content="https://tys-saldias.cl/galeria" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/galeria" />
 </svelte:head>
 
 <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6">

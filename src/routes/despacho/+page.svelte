@@ -45,7 +45,7 @@
 	/>
 	<meta property="og:title" content="Despacho y Envíos | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Despacho gratis en la zona, envíos a todo Chile por Starken o Bluexpress y retiro en nuestras sucursales de Villa Alemana." />
-	<meta property="og:url" content="https://tys-saldias.cl/despacho" />
+	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/despacho" />
 </svelte:head>
 
 <!-- Hero -->
