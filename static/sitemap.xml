@@ -11,9 +11,14 @@
 		<priority>0.9</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/nosotros</loc>
+		<loc>https://tys-saldias.cl/faq</loc>
 		<changefreq>monthly</changefreq>
-		<priority>0.6</priority>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/despacho</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://tys-saldias.cl/contacto</loc>
@@ -21,43 +26,73 @@
 		<priority>0.7</priority>
 	</url>
 	<url>
+		<loc>https://tys-saldias.cl/nosotros</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
 		<loc>https://tys-saldias.cl/galeria</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.5</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/timbre-circular-personalizable</loc>
+		<loc>https://tys-saldias.cl/producto/timbre-automatico-rectangular</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/timbre-rectangular-personalizable</loc>
+		<loc>https://tys-saldias.cl/producto/fechador-automatico</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/timbre-cuadrado-personalizable</loc>
+		<loc>https://tys-saldias.cl/producto/timbre-cuadrado-automatico</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/sello-3d-empresa</loc>
+		<loc>https://tys-saldias.cl/producto/timbre-redondo-automatico</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/sello-3d-notarial</loc>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://tys-saldias.cl/producto/timbre-fecha-importado</loc>
+		<loc>https://tys-saldias.cl/producto/timbre-portatil</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.7</priority>
 	</url>
 	<url>
-		<loc>https://tys-saldias.cl/producto/timbre-numerador-importado</loc>
+		<loc>https://tys-saldias.cl/producto/timbre-manual</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/tampon-manual</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/dactilar-d233</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/tinta-timbres</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/roller-documentos</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/roller-packaging</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	</url>
+	<url>
+		<loc>https://tys-saldias.cl/producto/set-escolar</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
 	</url>
 </urlset>

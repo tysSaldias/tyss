@@ -5,6 +5,7 @@
 		{ href: '/catalogo', label: 'Catálogo' },
 		{ href: '/nosotros', label: 'Nosotros' },
 		{ href: '/contacto', label: 'Contacto' },
+		{ href: '/despacho', label: 'Despacho' },
 		{ href: '/galeria', label: 'Galería' },
 		{ href: '/faq', label: 'FAQ' },
 	];

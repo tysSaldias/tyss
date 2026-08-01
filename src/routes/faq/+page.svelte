@@ -106,7 +106,7 @@
 			items: [
 				{
 					q: '¿Envían a todo Chile?',
-					a: 'Sí, realizamos envíos a todo Chile. Tu pedido se despacha a través de Starken o Bluexpress, con opción de pago por pagar (contra entrega). No importa en qué región estés, coordinamos la entrega de tu timbre.'
+					a: `Sí, realizamos envíos a todo Chile. Tu pedido se despacha a través de Starken o Bluexpress, con opción de pago por pagar (contra entrega). No importa en qué región estés, coordinamos la entrega de tu timbre. Puedes revisar nuestra página de ${internalLink('/despacho', 'despacho y envíos')} para conocer la cobertura, los tiempos y las condiciones de entrega.`
 				},
 				{
 					q: '¿Qué empresas de transporte utilizan?',
@@ -114,7 +114,7 @@
 				},
 				{
 					q: '¿Cuánto demora un envío?',
-					a: 'El tiempo de envío depende del destino y es el que indique la empresa de transporte al momento de coordinar la entrega. En Timbres y Sellos Saldias te informamos el plazo estimado al confirmar tu pedido por WhatsApp.'
+					a: `El tiempo de envío depende del destino y es el que indique la empresa de transporte al momento de coordinar la entrega. En Timbres y Sellos Saldias te informamos el plazo estimado al confirmar tu pedido por WhatsApp. En nuestra página de ${internalLink('/despacho', 'despacho y envíos')} separamos claramente el tiempo de fabricación del tiempo de envío.`
 				},
 				{
 					q: '¿Cuánto demora la fabricación de un timbre?',
@@ -122,7 +122,7 @@
 				},
 				{
 					q: '¿Puedo retirar mi pedido personalmente?',
-					a: 'Sí, puedes retirar tu pedido directamente en nuestros puntos de venta oficiales: Av. Valparaíso 1311, Villa Alemana, o la sucursal Estilomania en Calle Santiago 851, local 4. Coordina el retiro por WhatsApp y te lo dejamos listo.'
+					a: `Sí, puedes retirar tu pedido directamente en nuestros puntos de venta oficiales: Av. Valparaíso 1311, Villa Alemana, o la sucursal Estilomania en Calle Santiago 851, local 4. Coordina el retiro por WhatsApp y te lo dejamos listo. En nuestra página de ${internalLink('/despacho', 'despacho y envíos')} encuentras las direcciones, los horarios y las condiciones de retiro.`
 				},
 				{
 					q: '¿Tienen despacho gratis?',

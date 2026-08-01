@@ -38,6 +38,9 @@
 						<a href="/contacto" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Contacto</a>
 					</li>
 					<li>
+						<a href="/despacho" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Despacho</a>
+					</li>
+					<li>
 						<a href="/galeria" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Galería</a>
 					</li>
 					<li>
