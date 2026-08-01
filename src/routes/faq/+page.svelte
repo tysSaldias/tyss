@@ -258,7 +258,7 @@
 				},
 				{
 					q: '¿Revisan el diseño antes de fabricar?',
-					a: 'Sí, antes de fabricar revisamos cada diseño y te confirmamos por WhatsApp. Así evitamos errores en el texto o el logo, y si hace falta ajustar algo, lo conversamos contigo antes de producir tu timbre.'
+					a: `Sí, antes de fabricar revisamos cada diseño y te confirmamos por WhatsApp. Así evitamos errores en el texto o el logo, y si hace falta ajustar algo, lo conversamos contigo antes de producir tu timbre. Puedes conocer más sobre la aprobación de diseños y nuestra política en la página de ${internalLink('/garantias', 'Garantías y Devoluciones')}.`
 				}
 			]
 		},
