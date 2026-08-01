@@ -7,6 +7,7 @@
 		{ href: '/contacto', label: 'Contacto' },
 		{ href: '/despacho', label: 'Despacho' },
 		{ href: '/garantias', label: 'Garantías' },
+		{ href: '/por-que-elegirnos', label: 'Por qué elegirnos' },
 		{ href: '/galeria', label: 'Galería' },
 		{ href: '/faq', label: 'FAQ' },
 	];

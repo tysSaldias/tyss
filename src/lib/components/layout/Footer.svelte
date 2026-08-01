@@ -40,12 +40,15 @@
 					<li>
 						<a href="/despacho" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Despacho</a>
 					</li>
-					<li>
-						<a href="/garantias" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Garantías</a>
-					</li>
-					<li>
-						<a href="/galeria" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Galería</a>
-					</li>
+				<li>
+					<a href="/garantias" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Garantías</a>
+				</li>
+				<li>
+					<a href="/por-que-elegirnos" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Por qué elegirnos</a>
+				</li>
+				<li>
+					<a href="/galeria" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Galería</a>
+				</li>
 					<li>
 						<a href="/faq" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Preguntas Frecuentes</a>
 					</li>

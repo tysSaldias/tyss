@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getProductBySlug, priceFormat } from '$lib/data/products';
+	import { INSTAGRAM_URL } from '$lib/data/site';
 	import ConfiguradorTimbre from '$lib/components/configurator/ConfiguradorTimbre.svelte';
 
 	let { params } = $props();
@@ -74,9 +75,9 @@
 
 			{#if product.comingSoon}
 				<div class="mt-8 border-t border-brand-border pt-8">
-					<p class="text-gray-400">Este producto estará disponible pronto. ¡Seguinos en Instagram para enterarte!</p>
+					<p class="text-gray-400">Este producto estará disponible pronto. ¡Síguenos en Instagram para enterarte!</p>
 					<a
-						href="https://www.instagram.com/timbresysellos_saldias/"
+						href={INSTAGRAM_URL}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="mt-4 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:from-purple-600 hover:to-pink-600"

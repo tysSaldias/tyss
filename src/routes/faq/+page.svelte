@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { generateSimpleWhatsAppLink, PHONE_DISPLAY } from '$lib/utils/wsp';
+	import { INSTAGRAM_URL } from '$lib/data/site';
 
 	type FaqItem = { q: string; a: string };
 	type FaqCategory = { id: string; title: string; description: string; icon: string; items: FaqItem[] };
 
 	const WHATSAPP_LINK = generateSimpleWhatsAppLink();
-	const INSTAGRAM_LINK = 'https://www.instagram.com/timbresysellos_saldias/';
+	const INSTAGRAM_LINK = INSTAGRAM_URL;
 
 	// Escape text so answers stay plain text with only the injected <a> tags.
 	const escapeHtml = (text: string) =>
@@ -298,7 +299,7 @@
 			items: [
 				{
 					q: '¿Por qué elegir Timbres y Sellos Saldias?',
-					a: 'Porque somos un negocio familiar con fabricación artesanal en la Región de Valparaíso: trabajamos con materiales de calidad, revisamos cada timbre antes de entregarlo y te atendemos de forma personalizada por WhatsApp, con despacho gratis en Quilpué, Villa Alemana y Belloto.'
+					a: `Porque somos un negocio familiar con fabricación artesanal en la Región de Valparaíso: trabajamos con materiales de calidad, revisamos cada timbre antes de entregarlo y te atendemos de forma personalizada por WhatsApp, con despacho gratis en Quilpué, Villa Alemana y Belloto. Conoce más en nuestra página de ${internalLink('/por-que-elegirnos', 'por qué elegirnos')}.`
 				},
 				{
 					q: '¿Qué diferencia a Timbres y Sellos Saldias?',

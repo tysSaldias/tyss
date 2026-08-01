@@ -26,6 +26,11 @@
 		<priority>0.7</priority>
 	</url>
 	<url>
+		<loc>https://timbres-y-sellos-saldias.netlify.app/por-que-elegirnos</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
 		<loc>https://timbres-y-sellos-saldias.netlify.app/contacto</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.7</priority>

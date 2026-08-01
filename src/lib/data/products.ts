@@ -8,7 +8,7 @@ export const products: Product[] = [
 		id: 'timbre-automatico-rectangular',
 		name: 'Timbre Automático Rectangular',
 		description:
-			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 4 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm) y XL40 (22×57mm). Ideal para documentos, facturas y correspondence.',
+			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 4 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm) y XL40 (22×57mm). Ideal para documentos, facturas y correspondencia.',
 		category: 'timbre-personalizable',
 		basePrice: 8900,
 		images: ['/assets/products/xl-60-76x37-portada.png'],
