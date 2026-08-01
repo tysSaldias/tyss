@@ -2,6 +2,9 @@ import type { StampConfig, Product } from '$lib/types';
 
 const WHATSAPP_NUMBER = '56988134375';
 
+/** Display form of the WhatsApp number, used in visible UI copy. */
+export const PHONE_DISPLAY = '+56 9 8813 4375';
+
 export function generateWhatsAppMessage(config: StampConfig, product: Product): string {
 	const size = product.availableSizes.find((s) => s.id === config.sizeId);
 

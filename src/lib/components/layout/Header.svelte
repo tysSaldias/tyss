@@ -6,6 +6,7 @@
 		{ href: '/nosotros', label: 'Nosotros' },
 		{ href: '/contacto', label: 'Contacto' },
 		{ href: '/galeria', label: 'Galería' },
+		{ href: '/faq', label: 'FAQ' },
 	];
 
 	function toggleMenu() {

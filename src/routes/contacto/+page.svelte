@@ -169,15 +169,21 @@
 						</li>
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">📦</span>
-							<span><strong class="text-gray-200">Envíos a todo Chile</strong> por Starken o pagos contra entrega</span>
+							<span><strong class="text-gray-200">Envíos a todo Chile</strong> por Starken o Bluexpress (por pagar)</span>
 						</li>
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">⏰</span>
-							<span><strong class="text-gray-200">Horarios:</strong> Lun–Sáb, 9:00–19:00 hrs</span>
+							<span><strong class="text-gray-200">Horarios:</strong> Lun–Vie, 10:00–18:00 hrs</span>
 						</li>
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">📍</span>
 							<span><strong class="text-gray-200">Dirección:</strong> Av. Valparaíso 1311, Villa Alemana, Valparaíso</span>
+						</li>
+						<li class="flex items-start gap-2">
+							<span class="mt-0.5">🏪</span>
+							<span
+								><strong class="text-gray-200">Sucursal Estilomania:</strong> Calle Santiago 851, local 4, Villa Alemana (uniformes corporativos)</span
+							>
 						</li>
 					</ul>
 				</div>
@@ -186,21 +192,46 @@
 
 		<!-- Mapa -->
 		<div class="mt-10 rounded-xl bg-brand-card p-6">
-			<h2 class="text-lg font-semibold text-white">Ubicación</h2>
-			<p class="mt-2 text-sm text-gray-400">
-				Encuéntranos en Av. Valparaíso 1311, Villa Alemana.
-			</p>
-			<div class="mt-4 overflow-hidden rounded-lg">
-				<iframe
-					src="https://maps.google.com/maps?q=Avenida+Valparaiso+1311,+Villa+Alemana,+Valparaiso&t=&z=17&ie=UTF8&iwloc=&output=embed"
-					width="100%"
-					height="350"
-					style="border:0;"
-					allowfullscreen
-					loading="lazy"
-					referrerpolicy="no-referrer-when-downgrade"
-					title="Mapa de ubicación - Av. Valparaíso 1311, Villa Alemana"
-				></iframe>
+			<h2 class="text-lg font-semibold text-white">Nuestras Sucursales</h2>
+			<div class="mt-4 grid gap-6 lg:grid-cols-2">
+				<div>
+					<p class="text-sm text-gray-300">
+						<strong class="text-white">Timbres y Sellos Saldias</strong>
+						<br />
+						Av. Valparaíso 1311, Villa Alemana
+					</p>
+					<div class="mt-3 overflow-hidden rounded-lg">
+						<iframe
+							src="https://maps.google.com/maps?q=Avenida+Valparaiso+1311,+Villa+Alemana,+Valparaiso&t=&z=17&ie=UTF8&iwloc=&output=embed"
+							width="100%"
+							height="300"
+							style="border:0;"
+							allowfullscreen
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							title="Mapa de ubicación - Av. Valparaíso 1311, Villa Alemana"
+						></iframe>
+					</div>
+				</div>
+				<div>
+					<p class="text-sm text-gray-300">
+						<strong class="text-white">Estilomania — Uniformes Corporativos</strong>
+						<br />
+						Calle Santiago 851, local 4, Villa Alemana
+					</p>
+					<div class="mt-3 overflow-hidden rounded-lg">
+						<iframe
+							src="https://maps.google.com/maps?q=Calle+Santiago+851,+Villa+Alemana,+Valparaiso&t=&z=17&ie=UTF8&iwloc=&output=embed"
+							width="100%"
+							height="300"
+							style="border:0;"
+							allowfullscreen
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							title="Mapa de ubicación - Estilomania, Calle Santiago 851, Villa Alemana"
+						></iframe>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
