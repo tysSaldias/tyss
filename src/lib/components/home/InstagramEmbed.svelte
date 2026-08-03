@@ -21,7 +21,7 @@
 			height="500"
 			frameborder="0"
 			scrolling="no"
-			allowtransparency="true"
+			allowtransparency={true}
 			class:border-0={!iframeLoaded}
 			class:h-0={!iframeLoaded}
 			class:w-full={true}
