@@ -8,7 +8,7 @@ export const products: Product[] = [
 		id: 'timbre-automatico-rectangular',
 		name: 'Timbre Automático Rectangular',
 		description:
-			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 6 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm), XL40 (22×57mm), XL50 (30×69mm) y XL60 (37×76mm, próximamente). Ideal para documentos, facturas y correspondencia.',
+			'Timbre automático de goma personalizable con tu logo o texto. Ideal para documentos, facturas y correspondencia.',
 		category: 'timbre-personalizable',
 		basePrice: 8900,
 		images: ['/assets/products/xl-60-76x37-portada.png'],
@@ -43,7 +43,7 @@ export const products: Product[] = [
 		id: 'fechador-automatico',
 		name: 'Fechador Automático',
 		description:
-			'Timbre fechador automático con cinta entintada reemplazable. Disponible en XL703 (50×30mm) y XL704 (64×40mm). Marco de plástico reforzado con ventana para visualizar la fecha.',
+			'Timbre fechador automático con cinta entintada reemplazable. Marco de plástico reforzado con ventana para visualizar la fecha.',
 		category: 'timbre-personalizable',
 		basePrice: 31500,
 		images: ['/assets/products/xl-702-64x40-portada.png'],
@@ -64,7 +64,7 @@ export const products: Product[] = [
 		id: 'timbre-cuadrado-automatico',
 		name: 'Timbre Cuadrado Automático',
 		description:
-			'Timbre cuadrado de goma personalizable con tu logo. Disponible en XL601 (30×30mm) y XL602 (40×40mm). Diseño moderno con superficie de impresión amplia.',
+			'Timbre cuadrado de goma personalizable con tu logo. Diseño moderno con superficie de impresión amplia.',
 		category: 'timbre-personalizable',
 		basePrice: 21900,
 		images: ['/assets/products/xl-601-602-negro.png'],
@@ -88,7 +88,7 @@ export const products: Product[] = [
 		id: 'timbre-redondo-automatico',
 		name: 'Timbre Redondo Automático',
 		description:
-			'Timbre redondo de goma personalizable con tu logo. Disponible en XL803 (Ø 30mm) y XL804 (Ø 43mm). Forma circular ideal para sellos de aprobación y logotipos.',
+			'Timbre redondo de goma personalizable con tu logo. Forma circular ideal para sellos de aprobación y logotipos.',
 		category: 'timbre-personalizable',
 		basePrice: 21900,
 		images: ['/assets/products/Capa 1.png'],
@@ -138,7 +138,7 @@ export const products: Product[] = [
 		id: 'timbre-manual',
 		name: 'Timbre Manual',
 		description:
-			'Timbre manual de goma con mango de madera. Disponible en 6 tamaños: 40×40mm ($12.800), 70×70mm ($14.300), 90×90mm ($17.200), 100×100mm ($21.500), 120×120mm ($25.700) y 150×100mm ($28.600).',
+			'Timbre manual de goma con mango de madera.',
 		category: 'timbre-personalizable',
 		basePrice: 12800,
 		images: ['/assets/products/Timbre cuadrado manual.png'],
@@ -165,7 +165,7 @@ export const products: Product[] = [
 		id: 'tampon-manual',
 		name: 'Tampón Manual',
 		description:
-			'Tampón de goma manual para marcar con tinta. Disponible en 6 tamaños: 40×40mm ($4.900), 70×70mm ($5.900), 90×90mm ($6.900), 100×100mm ($7.900), 120×120mm ($8.900) y 150×100mm ($10.900).',
+			'Tampón de goma manual para marcar con tinta.',
 		category: 'timbre-importado',
 		basePrice: 4900,
 		images: ['/assets/products/Tampon.png'],
