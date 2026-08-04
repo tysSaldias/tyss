@@ -138,7 +138,7 @@ export const products: Product[] = [
 		id: 'timbre-manual',
 		name: 'Timbre Manual',
 		description:
-			'Timbre manual de goma con mango de madera.',
+			'Timbre manual de goma con mango de plástico impreso en 3D.',
 		category: 'timbre-personalizable',
 		basePrice: 12800,
 		images: ['/assets/products/Timbre cuadrado manual.png'],
