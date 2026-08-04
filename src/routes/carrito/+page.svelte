@@ -83,13 +83,13 @@
 									{line.sizeName}{line.sizeDimensions ? ` (${line.sizeDimensions})` : ''}
 								</p>
 							{/if}
-							{#if line.text}
-								<p class="text-sm text-gray-400">Texto: {truncate(line.text)}</p>
-							{/if}
-							{#if line.colorName}
-								<p class="text-sm text-gray-400">Color: {line.colorName}</p>
-							{/if}
-							<p class="mt-1 text-sm text-gray-300">{priceFormat(line.unitPrice)} c/u</p>
+						{#if line.text}
+							<p class="text-sm text-gray-400">Texto: {truncate(line.text)}</p>
+						{/if}
+						{#if line.hasLogo}
+							<p class="text-sm text-gray-400">Logo: sí</p>
+						{/if}
+						<p class="mt-1 text-sm text-gray-300">{priceFormat(line.unitPrice)} c/u</p>
 						</div>
 						<div class="flex items-center gap-2">
 							<button

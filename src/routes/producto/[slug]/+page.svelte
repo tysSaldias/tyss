@@ -8,6 +8,25 @@
 
 	const product = $derived(getProductBySlug(params.slug));
 
+	const referenceImages = $derived(product?.referenceImages ?? []);
+
+	// Filenames encode which sizes each image shows, e.g. "xl10-20-30.jpeg" -> "Tamaños XL10, XL20 y XL30".
+	function referenceLabel(src: string): string {
+		const fileName = src.split('/').pop() ?? src;
+		const base = fileName.replace(/\.\w+$/, '');
+		const sizes = base
+			.replace(/^xl/i, '')
+			.split('-')
+			.filter(Boolean)
+			.map((s) => `XL${s.toUpperCase()}`);
+
+		if (sizes.length === 0) return src;
+		if (sizes.length === 1) return `Tamaño ${sizes[0]}`;
+
+		const list = sizes.slice(0, -1).join(', ');
+		return `Tamaños ${list} y ${sizes[sizes.length - 1]}`;
+	}
+
 	let adding = $state(false);
 	let added = $state(false);
 	let addedTimer: ReturnType<typeof setTimeout> | undefined;
@@ -119,6 +138,10 @@
 					</div>
 				{:else}
 				<div class="mt-8 border-t border-brand-border pt-8">
+					<div class="mb-4 flex items-center justify-between rounded-xl bg-gray-800/50 p-4">
+						<span class="text-gray-400">Total:</span>
+						<span class="text-2xl font-bold text-brand-yellow">{priceFormat(product.basePrice)}</span>
+					</div>
 					<button
 						onclick={handleAddToCartSimple}
 						disabled={adding}
@@ -145,6 +168,29 @@
 			{/if}
 			</div>
 		</div>
+
+		{#if referenceImages.length > 0}
+			<!-- Reference size examples: what fits inside the stamp, per size -->
+			<section class="mt-12">
+				<h2 class="text-2xl font-bold text-white">¿Qué cabe en tu timbre?</h2>
+				<p class="mt-2 text-gray-400">Mira qué textos y diseños caben en cada tamaño de este timbre.</p>
+				<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{#each referenceImages as src (src)}
+						<figure class="overflow-hidden rounded-xl border border-brand-border bg-brand-card p-2">
+							<img
+								src={src}
+								alt={referenceLabel(src)}
+								class="h-auto w-full rounded-lg object-contain"
+								width="600"
+								height="600"
+								loading="lazy"
+							/>
+							<figcaption class="mt-2 px-1 text-center text-sm text-gray-300">{referenceLabel(src)}</figcaption>
+						</figure>
+					{/each}
+				</div>
+			</section>
+		{/if}
 	</section>
 {:else}
 	<section class="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6">

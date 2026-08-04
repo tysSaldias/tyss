@@ -11,6 +11,8 @@ export interface CartLine {
 	unitPrice: number;
 	quantity: number;
 	text?: string;
+	/** True when the design includes a logo/image (excluded from small sizes). */
+	hasLogo?: boolean;
 	sizeName?: string;
 	sizeDimensions?: string;
 	colorName?: string;

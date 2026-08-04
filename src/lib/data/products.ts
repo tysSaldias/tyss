@@ -8,10 +8,15 @@ export const products: Product[] = [
 		id: 'timbre-automatico-rectangular',
 		name: 'Timbre Automático Rectangular',
 		description:
-			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 4 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm) y XL40 (22×57mm). Ideal para documentos, facturas y correspondencia.',
+			'Timbre automático de goma personalizable con tu logo o texto. Disponible en 6 tamaños: XL10 (12×25mm), XL20 (15×36mm), XL30 (19×46mm), XL40 (22×57mm), XL50 (30×69mm) y XL60 (37×76mm, próximamente). Ideal para documentos, facturas y correspondencia.',
 		category: 'timbre-personalizable',
 		basePrice: 8900,
 		images: ['/assets/products/xl-60-76x37-portada.png'],
+		referenceImages: [
+			'/assets/tamaños/xl10-20-30.jpeg',
+			'/assets/tamaños/xl40-50.jpeg',
+			'/assets/tamaños/xl60.jpeg',
+		],
 		availableColors: [
 			'morado-oscuro', 'rojo', 'azul-rey', 'verde-esmeralda',
 			'negro', 'blanco', 'naranja', 'plateado', 'oro', 'cobrizo',
@@ -21,7 +26,11 @@ export const products: Product[] = [
 			{ id: 'XL20', name: 'XL20', dimensions: '15×36mm', priceModifier: 2000, sortOrder: 2 },
 			{ id: 'XL30', name: 'XL30', dimensions: '19×46mm', priceModifier: 7000, sortOrder: 3 },
 			{ id: 'XL40', name: 'XL40', dimensions: '22×57mm', priceModifier: 9000, sortOrder: 4 },
+			{ id: 'XL50', name: 'XL50', dimensions: '30×69mm', priceModifier: 0, sortOrder: 5, comingSoon: true },
+			{ id: 'XL60', name: 'XL60', dimensions: '37×76mm', priceModifier: 0, sortOrder: 6, comingSoon: true },
 		],
+		charLimits: [20, 40, 60, 90, 120, 160],
+		logoExcludedSizeIds: ['XL10', 'XL20'],
 		availableFonts: ['sans', 'serif', 'script', 'mono'],
 		isCustomizable: true,
 		hasTextInput: true,

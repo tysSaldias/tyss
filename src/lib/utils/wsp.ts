@@ -25,6 +25,10 @@ export function generateWhatsAppMessage(config: StampConfig, product: Product): 
 		parts.push(`Texto: ${config.text}`);
 	}
 
+	if (config.hasLogo) {
+		parts.push(`Logo: sí`);
+	}
+
 	// Color comentado temporalmente
 	// if (color) {
 	// 	const colorName = color.isPremium ? `${color.name} (premium)` : color.name;
@@ -64,8 +68,8 @@ export function generateCartWhatsAppMessage(lines: CartLine[]): string {
 		if (line.text) {
 			parts.push(`   Texto: ${truncateText(line.text, 80)}`);
 		}
-		if (line.colorName) {
-			parts.push(`   Color: ${line.colorName}`);
+		if (line.hasLogo) {
+			parts.push(`   Logo: sí`);
 		}
 	});
 
