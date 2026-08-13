@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { WHATSAPP_NUMBER } from '$lib/utils/wsp';
+	import { createBrowserClient } from '$lib/utils/supabase';
+	import { getAuthState } from '$lib/stores/auth.svelte';
 
 	let { open = $bindable(false), sidebarOpen = false }: { open?: boolean; sidebarOpen?: boolean } = $props();
+
+	const auth = getAuthState();
 
 	let name = $state('');
 	let phone = $state('');
 	let privacyAccepted = $state(false);
 	let errors = $state<{ name?: string; phone?: string; privacy?: string }>({});
+	let isSubmitting = $state(false);
 
 	function validate(): boolean {
 		errors = {};
@@ -28,19 +33,44 @@
 		return Object.keys(errors).length === 0;
 	}
 
-	function handleSubmit(e: Event) {
+	async function saveLeadToSupabase(): Promise<void> {
+		const supabase = createBrowserClient();
+		const { error } = await supabase.from('leads').insert({
+			name: name.trim(),
+			phone: phone.trim(),
+			message: `Hola! Soy ${name.trim()}.\nMi teléfono es ${phone.trim()}.\nQuiero información sobre sus productos.`,
+			source: 'whatsapp_float',
+			user_id: auth.user?.id ?? null
+		});
+
+		if (error) {
+			console.error('Error saving lead:', error);
+		}
+	}
+
+	async function handleSubmit(e: Event) {
 		e.preventDefault();
 
-		if (!validate()) return;
+		if (!validate() || isSubmitting) return;
 
-		const message = `Hola! Soy ${name.trim()}.\nMi teléfono es ${phone.trim()}.\nQuiero información sobre sus productos.`;
-		const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+		isSubmitting = true;
 
-		window.open(url, '_blank');
-		open = false;
-		name = '';
-		phone = '';
-		privacyAccepted = false;
+		try {
+			// Save to Supabase (don't await - fire and forget)
+			saveLeadToSupabase();
+
+			// Open WhatsApp
+			const message = `Hola! Soy ${name.trim()}.\nMi teléfono es ${phone.trim()}.\nQuiero información sobre sus productos.`;
+			const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+			window.open(url, '_blank');
+
+			open = false;
+			name = '';
+			phone = '';
+			privacyAccepted = false;
+		} finally {
+			isSubmitting = false;
+		}
 	}
 
 	function handleClose() {
