@@ -64,11 +64,9 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		// Don't throw, just return empty reviews
 	}
 
-	// Fetch product stats from view
+	// Fetch product stats via RPC function (avoids SECURITY DEFINER view)
 	const { data: stats, error: statsError } = await supabase
-		.from('product_stats')
-		.select('*')
-		.eq('product_id', productId)
+		.rpc('get_product_stats', { p_product_id: productId })
 		.single();
 
 	// If stats not found, return empty stats
