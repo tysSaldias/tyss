@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { generateSimpleWhatsAppLink, PHONE_DISPLAY } from '$lib/utils/wsp';
+
+	let { sidebarOpen = false }: { sidebarOpen?: boolean } = $props();
 </script>
 
 <a
 	href={generateSimpleWhatsAppLink()}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-lg shadow-green-950/50 transition-all hover:scale-110 hover:bg-green-600"
+	class="group fixed bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-lg shadow-green-950/50 transition-all hover:scale-110 hover:bg-green-600 right-6 {sidebarOpen ? 'md:right-[316px]' : ''}"
 	aria-label="Contactar por WhatsApp"
 >
 	<!-- Pulse rings -->

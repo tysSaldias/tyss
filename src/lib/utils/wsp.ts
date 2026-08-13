@@ -54,10 +54,10 @@ export function generateSimpleWhatsAppLink(): string {
  */
 export function generateCartWhatsAppMessage(lines: CartLine[]): string {
 	if (lines.length === 0) {
-		return 'Hola! Quiero hacer un pedido:';
+		return 'Hola! Quiero comprar:';
 	}
 
-	const parts: string[] = ['Hola! Quiero hacer este pedido:', ''];
+	const parts: string[] = ['Hola! Quiero comprar:', ''];
 
 	lines.forEach((line, index) => {
 		const sizePart = line.sizeName

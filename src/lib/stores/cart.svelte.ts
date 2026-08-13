@@ -16,6 +16,8 @@ export interface CartLine {
 	sizeName?: string;
 	sizeDimensions?: string;
 	colorName?: string;
+	/** Per-item selection toggle — unchecked by default. */
+	selected?: boolean;
 }
 
 const STORAGE_KEY = 'tyss-cart';
@@ -42,7 +44,8 @@ function loadCart(): CartLine[] {
 		const raw = window.localStorage.getItem(STORAGE_KEY);
 		if (!raw) return [];
 		const parsed: unknown = JSON.parse(raw);
-		return Array.isArray(parsed) ? parsed.filter(isCartLine) : [];
+		if (!Array.isArray(parsed)) return [];
+		return parsed.filter(isCartLine).map((l) => ({ ...l, selected: l.selected ?? false }));
 	} catch {
 		// Corrupted or unavailable storage — start with an empty cart.
 		return [];
@@ -104,7 +107,7 @@ export function addToCart(line: CartLine): void {
 	if (existing) {
 		existing.quantity += 1;
 	} else {
-		items.push({ ...line, quantity: 1 });
+		items.push({ ...line, quantity: 1, selected: false });
 	}
 	persist();
 }
@@ -133,4 +136,43 @@ export function updateQuantity(key: string, qty: number): void {
 export function clearCart(): void {
 	items.length = 0;
 	persist();
+}
+
+// ── Per-item selection ─────────────────────────────────────────────
+
+/** Toggle the `selected` flag on a single cart line. */
+export function toggleSelection(key: string): void {
+	const line = items.find((item) => item.key === key);
+	if (line) {
+		line.selected = !line.selected;
+		persist();
+	}
+}
+
+/** Mark every cart line as selected. */
+export function selectAll(): void {
+	for (const line of items) {
+		line.selected = true;
+	}
+	persist();
+}
+
+/** Mark every cart line as unselected. */
+export function deselectAll(): void {
+	for (const line of items) {
+		line.selected = false;
+	}
+	persist();
+}
+
+/** Sum of unitPrice * quantity for all selected lines. */
+export function selectedTotal(): number {
+	return items
+		.filter((l) => l.selected)
+		.reduce((sum, l) => sum + l.unitPrice * l.quantity, 0);
+}
+
+/** Return only the selected cart lines (used for WhatsApp payload). */
+export function selectedLines(): CartLine[] {
+	return items.filter((l) => l.selected);
 }
