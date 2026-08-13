@@ -5,5 +5,5 @@
 # All routes go to SvelteKit server function (SSR)
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/index"
+  to = "/.netlify/functions/sveltekit-render"
   status = 200
