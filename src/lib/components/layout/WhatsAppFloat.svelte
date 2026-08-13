@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { generateSimpleWhatsAppLink, PHONE_DISPLAY } from '$lib/utils/wsp';
+	import { PHONE_DISPLAY } from '$lib/utils/wsp';
+	import WhatsAppContactForm from '$lib/components/ui/WhatsAppContactForm.svelte';
 
 	let { sidebarOpen = false }: { sidebarOpen?: boolean } = $props();
+	let formOpen = $state(false);
 </script>
 
-<a
-	href={generateSimpleWhatsAppLink()}
-	target="_blank"
-	rel="noopener noreferrer"
+<button
+	onclick={() => (formOpen = true)}
 	class="group fixed bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-lg shadow-green-950/50 transition-all hover:scale-110 hover:bg-green-600 right-6 {sidebarOpen ? 'md:right-[316px]' : ''}"
 	aria-label="Contactar por WhatsApp"
 >
@@ -38,4 +38,6 @@
 	>
 		Escríbenos al {PHONE_DISPLAY}
 	</span>
-</a>
+</button>
+
+<WhatsAppContactForm bind:open={formOpen} {sidebarOpen} />

@@ -196,7 +196,7 @@
 			<div class="mt-4 grid gap-6 lg:grid-cols-2">
 				<div>
 					<p class="text-sm text-gray-300">
-						<strong class="text-white">Timbres y Sellos Saldias</strong>
+						<strong class="text-white">IMPRENTA</strong>
 						<br />
 						Av. Valparaíso 1311, Villa Alemana
 					</p>
