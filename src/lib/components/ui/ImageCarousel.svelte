@@ -55,14 +55,17 @@
 	ontouchend={handleTouchEnd}
 >
 	<!-- Image -->
-	<div class="relative aspect-[16/10] w-full overflow-hidden">
+	<div class="relative w-full overflow-hidden">
 		{#each images as src, i (src)}
 			<img
 				{src}
 				alt="{alt} {i + 1}"
-				class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
+				class="w-full object-contain transition-opacity duration-300"
 				class:opacity-100={i === currentIndex}
 				class:opacity-0={i !== currentIndex}
+				class:absolute={i !== currentIndex}
+				class:inset-0={i !== currentIndex}
+				class:h-full={i !== currentIndex}
 				loading={i === 0 ? 'eager' : 'lazy'}
 			/>
 		{/each}
