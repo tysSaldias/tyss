@@ -40,4 +40,4 @@
 	</span>
 </button>
 
-<WhatsAppContactForm bind:open={formOpen} />
+<WhatsAppContactForm bind:open={formOpen} {sidebarOpen} />
