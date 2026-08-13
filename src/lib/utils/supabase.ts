@@ -2,10 +2,16 @@ import { createClient } from '@supabase/supabase-js';
 import { createBrowserClient as createSupabaseBrowserClient } from '@supabase/ssr';
 
 export function createBrowserClient() {
-	return createSupabaseBrowserClient(
-		import.meta.env.PUBLIC_SUPABASE_URL,
-		import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-	);
+	const url = import.meta.env.PUBLIC_SUPABASE_URL;
+	const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+	
+	console.log('Supabase env check:', { url: url?.substring(0, 30), keyExists: !!key });
+	
+	if (!url || !key) {
+		throw new Error('Missing Supabase env vars: PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY are required');
+	}
+	
+	return createSupabaseBrowserClient(url, key);
 }
 
 export function createServerClient(cookies: {
