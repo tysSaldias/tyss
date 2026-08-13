@@ -29,6 +29,11 @@
 	let added = $state(false);
 	let addedTimer: ReturnType<typeof setTimeout> | undefined;
 	let editingReview = $state<Review | null>(null);
+	let carouselIndex = $state(0);
+
+	function handleSizeChange(sizeId: string, index: number) {
+		carouselIndex = index;
+	}
 
 	function handleAddToCartSimple() {
 		if (adding) return;
@@ -109,7 +114,7 @@
 				{/if}
 			</div>
 			{#if referenceImages.length > 0}
-				<ImageCarousel images={referenceImages} alt="Tamaños disponibles" />
+				<ImageCarousel images={referenceImages} alt="Tamaños disponibles" index={carouselIndex} />
 			{/if}
 		</div>
 
@@ -155,7 +160,7 @@
 				{#if product.isCustomizable}
 					<div class="mt-8 border-t border-brand-border pt-8">
 						<h2 class="mb-4 text-xl font-semibold text-white">Personaliza tu timbre</h2>
-						<ConfiguradorTimbre product={product} />
+						<ConfiguradorTimbre product={product} onSizeChange={handleSizeChange} />
 					</div>
 				{:else}
 				<div class="mt-8 border-t border-brand-border pt-8">

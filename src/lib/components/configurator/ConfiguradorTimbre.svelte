@@ -8,7 +8,7 @@
 	import SelectorColor from './SelectorColor.svelte';
 	import SelectorTamanio from './SelectorTamanio.svelte';
 
-	let { product }: { product: Product } = $props();
+	let { product, onSizeChange }: { product: Product; onSizeChange?: (sizeId: string, index: number) => void } = $props();
 
 	let config = $state<StampConfig>({
 		text: '',
@@ -85,6 +85,8 @@
 
 	function handleSizeChange(sizeId: string) {
 		config.sizeId = sizeId;
+		const sizeIndex = product.availableSizes.findIndex((s) => s.id === sizeId);
+		onSizeChange?.(sizeId, sizeIndex);
 	}
 
 	let adding = $state(false);

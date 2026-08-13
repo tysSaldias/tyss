@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let { images = [], alt = 'Galería' }: { images: string[]; alt?: string } = $props();
+	let { images = [], alt = 'Galería', index = 0 }: { images: string[]; alt?: string; index?: number } = $props();
 
-	let currentIndex = $state(0);
+	let currentIndex = $state(index);
 	let touchStartX = 0;
 	let touchEndX = 0;
+
+	// Sync with external index prop
+	$effect(() => {
+		currentIndex = index;
+	});
 
 	function next() {
 		currentIndex = (currentIndex + 1) % images.length;
@@ -15,8 +20,8 @@
 		currentIndex = (currentIndex - 1 + images.length) % images.length;
 	}
 
-	function goTo(index: number) {
-		currentIndex = index;
+	function goTo(i: number) {
+		currentIndex = i;
 	}
 
 	function handleTouchStart(e: TouchEvent) {
