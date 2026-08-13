@@ -52,6 +52,9 @@
 					<li>
 						<a href="/faq" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Preguntas Frecuentes</a>
 					</li>
+					<li>
+						<a href="/privacidad" class="text-sm text-gray-400 transition-colors hover:text-brand-yellow">Política de Privacidad</a>
+					</li>
 				</ul>
 			</div>
 
