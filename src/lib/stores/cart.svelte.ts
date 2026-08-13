@@ -1,16 +1,16 @@
 import { browser } from '$app/environment';
 
-// ── Auto-open signal for CartSheet ──────────────────────────────
-let _openSheetSignal = $state(0);
+// ── Auto-open callback for CartSheet ────────────────────────────
+let _openSheetCb: (() => void) | null = null;
 
-/** Bump the signal so the layout opens the CartSheet on mobile. */
-export function signalOpenSheet(): void {
-	_openSheetSignal += 1;
+/** Register a callback that opens the CartSheet. Called by the layout. */
+export function onOpenSheet(cb: (() => void) | null): void {
+	_openSheetCb = cb;
 }
 
-/** Read-only accessor for the layout to consume the signal. */
-export function openSheetSignal(): number {
-	return _openSheetSignal;
+/** Fire the registered callback so the layout opens the CartSheet. */
+function fireOpenSheet(): void {
+	_openSheetCb?.();
 }
 
 export interface CartLine {
@@ -123,7 +123,7 @@ export function addToCart(line: CartLine): void {
 		items.push({ ...line, quantity: 1, selected: false });
 	}
 	persist();
-	signalOpenSheet();
+	fireOpenSheet();
 }
 
 export function removeFromCart(key: string): void {
