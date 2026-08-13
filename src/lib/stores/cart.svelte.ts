@@ -1,5 +1,18 @@
 import { browser } from '$app/environment';
 
+// ── Auto-open callback for CartSheet ────────────────────────────
+let _openSheetCb: (() => void) | null = null;
+
+/** Register a callback that opens the CartSheet. Called by the layout. */
+export function onOpenSheet(cb: (() => void) | null): void {
+	_openSheetCb = cb;
+}
+
+/** Fire the registered callback so the layout opens the CartSheet. */
+function fireOpenSheet(): void {
+	_openSheetCb?.();
+}
+
 export interface CartLine {
 	/** Unique line key: productId + serialized configuration (size/color/text). */
 	key: string;
@@ -110,6 +123,7 @@ export function addToCart(line: CartLine): void {
 		items.push({ ...line, quantity: 1, selected: false });
 	}
 	persist();
+	fireOpenSheet();
 }
 
 export function removeFromCart(key: string): void {

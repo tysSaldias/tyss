@@ -5,7 +5,7 @@
 	import WhatsAppFloat from '$lib/components/layout/WhatsAppFloat.svelte';
 	import CartSidebar from '$lib/components/cart/CartSidebar.svelte';
 	import CartSheet from '$lib/components/cart/CartSheet.svelte';
-	import { items, isHydrated, markHydrated } from '$lib/stores/cart.svelte';
+	import { items, isHydrated, markHydrated, onOpenSheet } from '$lib/stores/cart.svelte';
 	import { SITE_URL, INSTAGRAM_URL } from '$lib/data/site';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
@@ -16,6 +16,9 @@
 
 	onMount(() => {
 		markHydrated();
+		// Register callback so addToCart can open the sheet directly.
+		onOpenSheet(() => (sheetOpen = true));
+		return () => onOpenSheet(null);
 	});
 
 	const canonicalUrl = $derived(`${SITE_URL}${page.url.pathname === '/' ? '' : page.url.pathname}`);
