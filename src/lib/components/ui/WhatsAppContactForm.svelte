@@ -8,10 +8,16 @@
 	const auth = getAuthState();
 
 	let name = $state('');
-	let phone = $state('+56 9 ');
+	let phone = $state('');
 	let privacyAccepted = $state(false);
 	let errors = $state<{ name?: string; phone?: string; privacy?: string }>({});
 	let isSubmitting = $state(false);
+
+	const isFormValid = $derived(
+		name.trim().length > 0 &&
+		phone.trim().length === 8 &&
+		privacyAccepted
+	);
 
 	function validate(): boolean {
 		errors = {};
@@ -20,13 +26,11 @@
 			errors.name = 'El nombre es requerido';
 		}
 
-		const phoneDigits = phone.replace(/\D/g, '');
-		// +56 9 = 8 digits (56 + 9 + 8 local) = 10 digits total, but we want 8 local digits after +56 9
-		const localDigits = phone.replace('+56 9 ', '').replace(/\D/g, '');
+		const localDigits = phone.replace(/\D/g, '');
 		if (!localDigits) {
 			errors.phone = 'El teléfono es requerido';
 		} else if (!/^[0-9]{8}$/.test(localDigits)) {
-			errors.phone = 'Ingresa 8 dígitos después de +56 9';
+			errors.phone = 'Ingresa exactamente 8 dígitos';
 		}
 
 		if (!privacyAccepted) {
@@ -63,14 +67,14 @@
 			saveLeadToSupabase();
 
 			// Open WhatsApp with full phone number
-			const fullPhone = phone.replace(/\s/g, '');
+			const fullPhone = `+569${phone.trim()}`;
 			const message = `Hola! Soy ${name.trim()}.\nMi teléfono es ${fullPhone}.\nQuiero información sobre sus productos.`;
 			const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 			window.open(url, '_blank');
 
 			open = false;
 			name = '';
-			phone = '+56 9 ';
+			phone = '';
 			privacyAccepted = false;
 		} finally {
 			isSubmitting = false;
@@ -80,7 +84,7 @@
 	function handleClose() {
 		open = false;
 		name = '';
-		phone = '+56 9 ';
+		phone = '';
 		privacyAccepted = false;
 		errors = {};
 	}
@@ -156,7 +160,7 @@
 						type="tel"
 						bind:value={phone}
 						placeholder="12345678"
-						maxlength="13"
+						maxlength="8"
 						class="w-full rounded-r-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 transition-colors focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 					/>
 				</div>
@@ -185,7 +189,8 @@
 			<!-- Submit button -->
 			<button
 				type="submit"
-				class="w-full rounded-lg bg-green-500 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-green-600"
+				disabled={!isFormValid || isSubmitting}
+				class="w-full rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-all {isFormValid && !isSubmitting ? 'bg-green-500 hover:bg-green-600' : 'cursor-not-allowed bg-gray-600 text-gray-400'}"
 			>
 				Abrir WhatsApp
 			</button>
