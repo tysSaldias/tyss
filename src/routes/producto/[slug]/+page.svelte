@@ -16,21 +16,12 @@
 
 	const referenceImages = $derived(product?.referenceImages ?? []);
 
-	// Mock rating — deterministic per product id (fallback if stats not available)
-	function mockRating(id: string): { rating: number; reviews: number } {
-		let hash = 0;
-		for (let i = 0; i < id.length; i++) hash = ((hash << 5) - hash + id.charCodeAt(i)) | 0;
-		const base = 3.5 + (Math.abs(hash) % 15) / 10; // 3.5–4.9
-		const reviews = 12 + (Math.abs(hash) % 188); // 12–199
-		return { rating: Math.round(base * 10) / 10, reviews };
-	}
-
 	const rating = $derived(
 		product
 			? stats.review_count > 0
-				? { rating: stats.average_rating, reviews: stats.review_count }
-				: mockRating(product.id)
-			: { rating: 0, reviews: 0 }
+				? { rating: stats.average_rating, reviews: stats.review_count, isReal: true }
+				: { rating: 0, reviews: 0, isReal: false }
+			: { rating: 0, reviews: 0, isReal: false }
 	);
 
 	// Filenames encode which sizes each image shows, e.g. "xl10-20-30.jpeg" -> "Tamaños XL10, XL20 y XL30".
@@ -142,10 +133,12 @@
 							? 'Sello 3D'
 							: 'Accesorio'}
 				</span>
-				<h1 class="mt-3 text-3xl font-bold text-white">{product.name}</h1>
-			<div class="mt-2">
-				<ProductRating rating={rating.rating} reviewCount={rating.reviews} />
-			</div>
+			<h1 class="mt-3 text-3xl font-bold text-white">{product.name}</h1>
+			{#if rating.isReal}
+				<div class="mt-2">
+					<ProductRating rating={rating.rating} reviewCount={rating.reviews} />
+				</div>
+			{/if}
 				{#if product.comingSoon}
 					<span class="mt-2 inline-block rounded-full bg-brand-yellow px-3 py-1 text-sm font-bold text-gray-900">
 						Próximamente
