@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { count, isHydrated, markHydrated } from '$lib/stores/cart.svelte';
+	import LoginButton from '$lib/components/LoginButton.svelte';
 
 	let mobileOpen = $state(false);
 
@@ -80,6 +81,11 @@
 					</span>
 				{/if}
 			</a>
+
+			<!-- Login Button -->
+			<div class="ml-2">
+				<LoginButton />
+			</div>
 
 			<!-- Mobile Hamburger -->
 			<button
