@@ -6,6 +6,7 @@
 	import ProductRating from '$lib/components/ProductRating.svelte';
 	import ReviewForm from '$lib/components/reviews/ReviewForm.svelte';
 	import ReviewList from '$lib/components/reviews/ReviewList.svelte';
+	import ImageCarousel from '$lib/components/ui/ImageCarousel.svelte';
 	import type { Review, ReviewWithUser, ProductStats } from '$lib/types';
 
 	let { params, data } = $props();
@@ -23,23 +24,6 @@
 				: { rating: 0, reviews: 0, isReal: false }
 			: { rating: 0, reviews: 0, isReal: false }
 	);
-
-	// Filenames encode which sizes each image shows, e.g. "xl10-20-30.jpeg" -> "Tamaños XL10, XL20 y XL30".
-	function referenceLabel(src: string): string {
-		const fileName = src.split('/').pop() ?? src;
-		const base = fileName.replace(/\.\w+$/, '');
-		const sizes = base
-			.replace(/^xl/i, '')
-			.split('-')
-			.filter(Boolean)
-			.map((s) => `XL${s.toUpperCase()}`);
-
-		if (sizes.length === 0) return src;
-		if (sizes.length === 1) return `Tamaño ${sizes[0]}`;
-
-		const list = sizes.slice(0, -1).join(', ');
-		return `Tamaños ${list} y ${sizes[sizes.length - 1]}`;
-	}
 
 	let adding = $state(false);
 	let added = $state(false);
@@ -102,25 +86,30 @@
 
 		<div class="grid gap-8 lg:grid-cols-2">
 		<!-- Image gallery -->
-		<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple/30 to-gray-800">
-			{#if product.images && product.images.length > 0}
-				<img
-					src={product.images[0]}
-					alt={product.name}
-					class="h-full w-full object-contain p-4"
-					width="600"
-					height="600"
-					loading="eager"
-				/>
-			{:else}
-				<img
-					src="https://placehold.co/600x600/5B21B6/FFFFFF?text={product.name.charAt(0)}&font=raleway"
-					alt={product.name}
-					class="h-full w-full object-cover"
-					width="600"
-					height="600"
-					loading="eager"
-				/>
+		<div class="space-y-4">
+			<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple/30 to-gray-800">
+				{#if product.images && product.images.length > 0}
+					<img
+						src={product.images[0]}
+						alt={product.name}
+						class="h-full w-full object-contain p-4"
+						width="400"
+						height="400"
+						loading="eager"
+					/>
+				{:else}
+					<img
+						src="https://placehold.co/400x400/5B21B6/FFFFFF?text={product.name.charAt(0)}&font=raleway"
+						alt={product.name}
+						class="h-full w-full object-cover"
+						width="400"
+						height="400"
+						loading="eager"
+					/>
+				{/if}
+			</div>
+			{#if referenceImages.length > 0}
+				<ImageCarousel images={referenceImages} alt="Tamaños disponibles" />
 			{/if}
 		</div>
 
@@ -200,29 +189,6 @@
 			{/if}
 			</div>
 		</div>
-
-		{#if referenceImages.length > 0}
-			<!-- Reference size examples: what fits inside the stamp, per size -->
-			<section class="mt-12">
-				<h2 class="text-2xl font-bold text-white">¿Qué cabe en tu timbre?</h2>
-				<p class="mt-2 text-gray-400">Mira qué textos y diseños caben en cada tamaño de este timbre.</p>
-				<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{#each referenceImages as src (src)}
-						<figure class="overflow-hidden rounded-xl border border-brand-border bg-brand-card p-2">
-							<img
-								src={src}
-								alt={referenceLabel(src)}
-								class="h-auto w-full rounded-lg object-contain"
-								width="600"
-								height="600"
-								loading="lazy"
-							/>
-							<figcaption class="mt-2 px-1 text-center text-sm text-gray-300">{referenceLabel(src)}</figcaption>
-						</figure>
-					{/each}
-				</div>
-			</section>
-		{/if}
 
 		<!-- Reviews Section -->
 		<section class="mt-12">

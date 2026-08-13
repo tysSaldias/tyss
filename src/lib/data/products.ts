@@ -13,9 +13,12 @@ export const products: Product[] = [
 		basePrice: 8900,
 		images: ['/assets/products/xl-60-76x37-portada.png'],
 		referenceImages: [
-			'/assets/tamaños/xl10-20-30.jpeg',
-			'/assets/tamaños/xl40-50.jpeg',
-			'/assets/tamaños/xl60.jpeg',
+			'/assets/tamaños/1.png',
+			'/assets/tamaños/2.png',
+			'/assets/tamaños/3.png',
+			'/assets/tamaños/4.png',
+			'/assets/tamaños/5.png',
+			'/assets/tamaños/6.png',
 		],
 		availableColors: [
 			'morado-oscuro', 'rojo', 'azul-rey', 'verde-esmeralda',
