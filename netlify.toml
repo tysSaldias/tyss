@@ -2,6 +2,19 @@
   command = "npm run build"
   publish = "build"
 
+# API routes - must be BEFORE catch-all
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Auth callback
+[[redirects]]
+  from = "/auth/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA catch-all (LAST)
 [[redirects]]
   from = "/*"
   to = "/index.html"

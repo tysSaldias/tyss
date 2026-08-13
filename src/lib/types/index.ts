@@ -50,3 +50,23 @@ export interface StampConfig {
 	sizeId: string;
 	hasLogo: boolean;
 }
+
+export interface Review {
+	id: string;
+	user_id: string;
+	product_id: string;
+	rating: number;
+	comment: string;
+	created_at: string;
+}
+
+export interface ReviewWithUser extends Review {
+	user_name: string;
+	user_avatar: string;
+}
+
+export interface ProductStats {
+	product_id: string;
+	average_rating: number;
+	review_count: number;
+}

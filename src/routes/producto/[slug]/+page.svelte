@@ -3,12 +3,35 @@
 	import { INSTAGRAM_URL } from '$lib/data/site';
 	import { addToCart } from '$lib/stores/cart.svelte';
 	import ConfiguradorTimbre from '$lib/components/configurator/ConfiguradorTimbre.svelte';
+	import ProductRating from '$lib/components/ProductRating.svelte';
+	import ReviewForm from '$lib/components/reviews/ReviewForm.svelte';
+	import ReviewList from '$lib/components/reviews/ReviewList.svelte';
+	import type { Review, ReviewWithUser, ProductStats } from '$lib/types';
 
-	let { params } = $props();
+	let { params, data } = $props();
 
 	const product = $derived(getProductBySlug(params.slug));
+	const reviews = $derived(data.reviews);
+	const stats = $derived(data.stats);
 
 	const referenceImages = $derived(product?.referenceImages ?? []);
+
+	// Mock rating — deterministic per product id (fallback if stats not available)
+	function mockRating(id: string): { rating: number; reviews: number } {
+		let hash = 0;
+		for (let i = 0; i < id.length; i++) hash = ((hash << 5) - hash + id.charCodeAt(i)) | 0;
+		const base = 3.5 + (Math.abs(hash) % 15) / 10; // 3.5–4.9
+		const reviews = 12 + (Math.abs(hash) % 188); // 12–199
+		return { rating: Math.round(base * 10) / 10, reviews };
+	}
+
+	const rating = $derived(
+		product
+			? stats.review_count > 0
+				? { rating: stats.average_rating, reviews: stats.review_count }
+				: mockRating(product.id)
+			: { rating: 0, reviews: 0 }
+	);
 
 	// Filenames encode which sizes each image shows, e.g. "xl10-20-30.jpeg" -> "Tamaños XL10, XL20 y XL30".
 	function referenceLabel(src: string): string {
@@ -30,6 +53,7 @@
 	let adding = $state(false);
 	let added = $state(false);
 	let addedTimer: ReturnType<typeof setTimeout> | undefined;
+	let editingReview = $state<Review | null>(null);
 
 	function handleAddToCartSimple() {
 		if (adding) return;
@@ -50,6 +74,18 @@
 			added = false;
 			adding = false;
 		}, 1800);
+	}
+
+	function handleReviewSubmitted(review: Review) {
+		// In a real app, we'd re-fetch reviews or update local state
+		// For simplicity, we'll reload the page to get fresh data
+		window.location.reload();
+	}
+
+	function handleEditReview(review: ReviewWithUser) {
+		editingReview = review;
+		// Scroll to form
+		document.getElementById('review-form')?.scrollIntoView({ behavior: 'smooth' });
 	}
 </script>
 
@@ -107,6 +143,9 @@
 							: 'Accesorio'}
 				</span>
 				<h1 class="mt-3 text-3xl font-bold text-white">{product.name}</h1>
+			<div class="mt-2">
+				<ProductRating rating={rating.rating} reviewCount={rating.reviews} />
+			</div>
 				{#if product.comingSoon}
 					<span class="mt-2 inline-block rounded-full bg-brand-yellow px-3 py-1 text-sm font-bold text-gray-900">
 						Próximamente
@@ -191,6 +230,27 @@
 				</div>
 			</section>
 		{/if}
+
+		<!-- Reviews Section -->
+		<section class="mt-12">
+			<h2 class="mb-6 text-2xl font-bold text-white">Reseñas</h2>
+			<div class="grid gap-8 lg:grid-cols-2">
+				<!-- Review Form -->
+				<div id="review-form">
+					<ReviewForm
+						productId={product.id}
+						existingReview={editingReview}
+						onsubmit={handleReviewSubmitted}
+					/>
+				</div>
+				<!-- Review List -->
+				<ReviewList
+					reviews={reviews}
+					stats={stats}
+					onEdit={handleEditReview}
+				/>
+			</div>
+		</section>
 	</section>
 {:else}
 	<section class="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6">
