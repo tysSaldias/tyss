@@ -1,10 +1,11 @@
 import { createServerClient, parseCookieHeader, serializeCookieHeader } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// Create a Supabase client configured to use cookies
-	const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-	const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+	const supabaseUrl = PUBLIC_SUPABASE_URL;
+	const supabaseAnonKey = PUBLIC_SUPABASE_ANON_KEY;
 
 	// During prerender/build, environment variables may not be set
 	if (!supabaseUrl || !supabaseAnonKey) {

@@ -1,17 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 import { createBrowserClient as createSupabaseBrowserClient } from '@supabase/ssr';
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 export function createBrowserClient() {
-	const url = import.meta.env.PUBLIC_SUPABASE_URL;
-	const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-	
-	console.log('Supabase env check:', { url: url?.substring(0, 30), keyExists: !!key });
-	
-	if (!url || !key) {
+	if (!PUBLIC_SUPABASE_URL || !PUBLIC_SUPABASE_ANON_KEY) {
 		throw new Error('Missing Supabase env vars: PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY are required');
 	}
 	
-	return createSupabaseBrowserClient(url, key);
+	return createSupabaseBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 }
 
 export function createServerClient(cookies: {
@@ -19,8 +15,8 @@ export function createServerClient(cookies: {
 	set: (name: string, value: string, options: Record<string, unknown>) => void;
 }) {
 	return createClient(
-		import.meta.env.PUBLIC_SUPABASE_URL,
-		import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+		PUBLIC_SUPABASE_URL,
+		PUBLIC_SUPABASE_ANON_KEY,
 		{
 			auth: {
 				persistSession: false,
@@ -46,20 +42,6 @@ export function createServerClient(cookies: {
 						});
 					}
 				}
-			}
-		}
-	);
-}
-
-// Admin client with service role key (server only)
-export function createAdminClient() {
-	return createClient(
-		import.meta.env.PUBLIC_SUPABASE_URL,
-		import.meta.env.SUPABASE_SERVICE_ROLE_KEY,
-		{
-			auth: {
-				autoRefreshToken: false,
-				persistSession: false
 			}
 		}
 	);
