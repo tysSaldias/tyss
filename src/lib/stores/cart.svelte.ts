@@ -1,5 +1,18 @@
 import { browser } from '$app/environment';
 
+// ── Auto-open signal for CartSheet ──────────────────────────────
+let _openSheetSignal = $state(0);
+
+/** Bump the signal so the layout opens the CartSheet on mobile. */
+export function signalOpenSheet(): void {
+	_openSheetSignal += 1;
+}
+
+/** Read-only accessor for the layout to consume the signal. */
+export function openSheetSignal(): number {
+	return _openSheetSignal;
+}
+
 export interface CartLine {
 	/** Unique line key: productId + serialized configuration (size/color/text). */
 	key: string;
@@ -110,6 +123,7 @@ export function addToCart(line: CartLine): void {
 		items.push({ ...line, quantity: 1, selected: false });
 	}
 	persist();
+	signalOpenSheet();
 }
 
 export function removeFromCart(key: string): void {
