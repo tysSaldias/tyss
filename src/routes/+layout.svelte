@@ -3,10 +3,20 @@
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import WhatsAppFloat from '$lib/components/layout/WhatsAppFloat.svelte';
+	import CartSidebar from '$lib/components/cart/CartSidebar.svelte';
+	import CartSheet from '$lib/components/cart/CartSheet.svelte';
+	import { items, isHydrated, markHydrated } from '$lib/stores/cart.svelte';
 	import { SITE_URL, INSTAGRAM_URL } from '$lib/data/site';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	let sheetOpen = $state(false);
+
+	onMount(() => {
+		markHydrated();
+	});
 
 	const canonicalUrl = $derived(`${SITE_URL}${page.url.pathname === '/' ? '' : page.url.pathname}`);
 
@@ -58,10 +68,18 @@
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-gray-900 text-gray-200">
-	<Header />
+	<Header onCartClick={() => (sheetOpen = true)} />
 	<main class="flex-1 pt-16">
 		{@render children()}
 	</main>
 	<Footer />
-	<WhatsAppFloat />
+	{#if isHydrated() && items.length > 0}
+		<CartSidebar />
+		<CartSheet bind:open={sheetOpen} />
+		{#if !sheetOpen}
+			<WhatsAppFloat sidebarOpen={true} />
+		{/if}
+	{:else}
+		<WhatsAppFloat sidebarOpen={false} />
+	{/if}
 </div>
