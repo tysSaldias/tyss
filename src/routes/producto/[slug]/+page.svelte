@@ -7,6 +7,7 @@
 	import ReviewForm from '$lib/components/reviews/ReviewForm.svelte';
 	import ReviewList from '$lib/components/reviews/ReviewList.svelte';
 	import ImageCarousel from '$lib/components/ui/ImageCarousel.svelte';
+	import RelatedProducts from '$lib/components/ui/RelatedProducts.svelte';
 	import type { Review, ReviewWithUser, ProductStats } from '$lib/types';
 
 	let { params, data } = $props();
@@ -215,6 +216,9 @@
 				/>
 			</div>
 		</section>
+
+		<!-- Related Products -->
+		<RelatedProducts currentProductId={product.id} />
 	</section>
 {:else}
 	<section class="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6">
