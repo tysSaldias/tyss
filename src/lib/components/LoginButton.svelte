@@ -4,6 +4,13 @@
 	const auth = getAuthState();
 	let showMenu = $state(false);
 
+	// Check if Supabase is configured
+	const isConfigured = $derived(
+		typeof window !== 'undefined' &&
+		import.meta.env.PUBLIC_SUPABASE_URL &&
+		import.meta.env.PUBLIC_SUPABASE_URL !== 'https://your-project.supabase.co'
+	);
+
 	function toggleMenu() {
 		showMenu = !showMenu;
 	}
@@ -30,7 +37,9 @@
 	}
 </script>
 
-{#if auth.isLoading}
+{#if !isConfigured}
+	<!-- Supabase not configured - don't show login -->
+{:else if auth.isLoading}
 	<!-- Loading skeleton -->
 	<div class="h-8 w-8 animate-pulse rounded-full bg-gray-700"></div>
 {:else if auth.isAuthenticated}

@@ -6,6 +6,12 @@ let supabase: ReturnType<typeof createBrowserClient> | null = null;
 
 function getSupabase() {
 	if (!supabase && typeof window !== 'undefined') {
+		// Check if env vars are configured
+		const url = import.meta.env.PUBLIC_SUPABASE_URL;
+		const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+		if (!url || !key || url === 'https://your-project.supabase.co') {
+			return null;
+		}
 		supabase = createBrowserClient();
 	}
 	return supabase;
