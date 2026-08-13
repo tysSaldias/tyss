@@ -8,7 +8,7 @@
 	const auth = getAuthState();
 
 	let name = $state('');
-	let phone = $state('');
+	let phone = $state('+56 9 ');
 	let privacyAccepted = $state(false);
 	let errors = $state<{ name?: string; phone?: string; privacy?: string }>({});
 	let isSubmitting = $state(false);
@@ -20,10 +20,13 @@
 			errors.name = 'El nombre es requerido';
 		}
 
-		if (!phone.trim()) {
+		const phoneDigits = phone.replace(/\D/g, '');
+		// +56 9 = 8 digits (56 + 9 + 8 local) = 10 digits total, but we want 8 local digits after +56 9
+		const localDigits = phone.replace('+56 9 ', '').replace(/\D/g, '');
+		if (!localDigits) {
 			errors.phone = 'El teléfono es requerido';
-		} else if (!/^[0-9+\s()-]{8,}$/.test(phone.trim())) {
-			errors.phone = 'Ingresa un teléfono válido';
+		} else if (!/^[0-9]{8}$/.test(localDigits)) {
+			errors.phone = 'Ingresa 8 dígitos después de +56 9';
 		}
 
 		if (!privacyAccepted) {
@@ -59,14 +62,15 @@
 			// Save to Supabase (don't await - fire and forget)
 			saveLeadToSupabase();
 
-			// Open WhatsApp
-			const message = `Hola! Soy ${name.trim()}.\nMi teléfono es ${phone.trim()}.\nQuiero información sobre sus productos.`;
+			// Open WhatsApp with full phone number
+			const fullPhone = phone.replace(/\s/g, '');
+			const message = `Hola! Soy ${name.trim()}.\nMi teléfono es ${fullPhone}.\nQuiero información sobre sus productos.`;
 			const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 			window.open(url, '_blank');
 
 			open = false;
 			name = '';
-			phone = '';
+			phone = '+56 9 ';
 			privacyAccepted = false;
 		} finally {
 			isSubmitting = false;
@@ -76,7 +80,7 @@
 	function handleClose() {
 		open = false;
 		name = '';
-		phone = '';
+		phone = '+56 9 ';
 		privacyAccepted = false;
 		errors = {};
 	}
@@ -143,13 +147,19 @@
 				<label for="contact-phone" class="mb-1 block text-xs font-medium text-gray-300">
 					Teléfono
 				</label>
-				<input
-					id="contact-phone"
-					type="tel"
-					bind:value={phone}
-					placeholder="+56 9 1234 5678"
-					class="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 transition-colors focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
-				/>
+				<div class="flex">
+					<span class="flex items-center rounded-l-lg border border-r-0 border-gray-600 bg-gray-700 px-3 py-2 text-sm text-gray-300">
+						+56 9
+					</span>
+					<input
+						id="contact-phone"
+						type="tel"
+						bind:value={phone}
+						placeholder="12345678"
+						maxlength="13"
+						class="w-full rounded-r-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 transition-colors focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
+					/>
+				</div>
 				{#if errors.phone}
 					<p class="mt-1 text-xs text-red-400">{errors.phone}</p>
 				{/if}
