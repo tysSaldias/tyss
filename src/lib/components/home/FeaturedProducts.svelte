@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { getFeaturedProducts, priceFormat } from '$lib/data/products';
+	import { getProductsByCategory, priceFormat } from '$lib/data/products';
 
-	const featured = $derived(getFeaturedProducts());
+	const allProducts = $derived(getProductsByCategory('todos'));
 </script>
 
 <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
 	<div class="mb-10 text-center">
-		<h2 class="text-3xl font-bold text-white">Más Vendidos</h2>
-		<p class="mt-2 text-gray-400">Los más elegidos por nuestros clientes</p>
+		<h2 class="text-3xl font-bold text-white">Nuestros Productos</h2>
+		<p class="mt-2 text-gray-400">Todo lo que tenemos para ti</p>
 	</div>
 
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-		{#each featured as product}
+		{#each allProducts as product}
 			<a
 				href="/producto/{product.id}"
 				class="group rounded-xl bg-brand-card p-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-purple/10"
