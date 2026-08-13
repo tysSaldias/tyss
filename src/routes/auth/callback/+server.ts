@@ -1,6 +1,7 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr';
 import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 export const GET: RequestHandler = async ({ url, cookies, request }) => {
 	const code = url.searchParams.get('code');
@@ -8,8 +9,8 @@ export const GET: RequestHandler = async ({ url, cookies, request }) => {
 
 	if (code) {
 		const supabase = createServerClient(
-			import.meta.env.PUBLIC_SUPABASE_URL,
-			import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+			PUBLIC_SUPABASE_URL,
+			PUBLIC_SUPABASE_ANON_KEY,
 			{
 				cookies: {
 					getAll() {

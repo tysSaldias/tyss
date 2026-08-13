@@ -1,6 +1,7 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { createAdminClient } from '$lib/utils/supabase';
+import { createAdminClient } from '$lib/utils/supabase-admin';
+import { PUBLIC_REVIEWS_ENABLED } from '$env/static/public';
 
 // Helper to fetch user metadata (display name, avatar) for a list of user IDs
 async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { name: string; avatar: string }>> {
@@ -37,7 +38,7 @@ async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { na
 
 export const GET: RequestHandler = async ({ params, locals }) => {
 	// Feature flag check
-	if (import.meta.env.PUBLIC_REVIEWS_ENABLED !== 'true') {
+	if (PUBLIC_REVIEWS_ENABLED !== 'true') {
 		throw error(404, 'Feature not enabled');
 	}
 
@@ -93,7 +94,7 @@ export const GET: RequestHandler = async ({ params, locals }) => {
 
 export const POST: RequestHandler = async ({ params, request, locals }) => {
 	// Feature flag check
-	if (import.meta.env.PUBLIC_REVIEWS_ENABLED !== 'true') {
+	if (PUBLIC_REVIEWS_ENABLED !== 'true') {
 		throw error(404, 'Feature not enabled');
 	}
 
@@ -181,7 +182,7 @@ export const POST: RequestHandler = async ({ params, request, locals }) => {
 
 export const DELETE: RequestHandler = async ({ params, locals }) => {
 	// Feature flag check
-	if (import.meta.env.PUBLIC_REVIEWS_ENABLED !== 'true') {
+	if (PUBLIC_REVIEWS_ENABLED !== 'true') {
 		throw error(404, 'Feature not enabled');
 	}
 

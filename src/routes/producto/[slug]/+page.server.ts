@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { createAdminClient } from '$lib/utils/supabase';
+import { createAdminClient } from '$lib/utils/supabase-admin';
+import { PUBLIC_REVIEWS_ENABLED } from '$env/static/public';
 
 // Helper to fetch user metadata (display name, avatar) for a list of user IDs
 async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { name: string; avatar: string }>> {
@@ -37,7 +38,7 @@ async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { na
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	// Feature flag check
-	if (import.meta.env.PUBLIC_REVIEWS_ENABLED !== 'true') {
+	if (PUBLIC_REVIEWS_ENABLED !== 'true') {
 		return {
 			reviews: [],
 			stats: {
