@@ -152,7 +152,7 @@
 					Teléfono
 				</label>
 				<div class="flex">
-					<span class="flex items-center rounded-l-lg border border-r-0 border-gray-600 bg-gray-700 px-3 py-2 text-sm text-gray-300">
+					<span class="flex items-center whitespace-nowrap rounded-l-lg border border-r-0 border-gray-600 bg-gray-700 px-3 py-2 text-sm text-gray-300">
 						+56 9
 					</span>
 					<input

@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"@supabase/ssr": "^0.12.4",
-		"@supabase/supabase-js": "^2.112.3"
+		"@supabase/supabase-js": "^2.112.3",
+		"svelte-google-reviews": "^2.0.0"
 	}
 }

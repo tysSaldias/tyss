@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [".opencode/agent-olaf.md"],
+  "mcp": {
+    "rootervalis": { "enabled": false }, // desactiva el server compartido
+    "rootervalis-olaf": {
+      "type": "remote",
+      "url": "https://api.rootervalis.com/mcp?agent=olaf",
+      "headers": { "X-Agent-Name": "Olaf" },
+      "enabled": true,
+    },
+  },
+}
