@@ -160,10 +160,14 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       .filter((r) => r.some((v) => v !== null && v !== ""));
 
     let filtered = data;
+    // Normalize for accent-insensitive search
+    const normalize = (s: string) =>
+      s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
     if (category) {
-      const catLower = category.toLowerCase().trim();
+      const catNorm = normalize(category);
       filtered = data.filter(
-        (r) => r[0] && String(r[0]).toLowerCase().includes(catLower)
+        (r) => r[0] && normalize(String(r[0])).includes(catNorm)
       );
     }
 

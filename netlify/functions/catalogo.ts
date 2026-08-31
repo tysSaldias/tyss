@@ -166,6 +166,10 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       .slice(1)
       .filter((r) => r.some((v) => v !== null && v !== ""));
 
+    // Normalize for accent-insensitive search
+    const normalize = (s: string) =>
+      s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
     let filtered = data;
 
     if (sku) {
@@ -174,14 +178,14 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
         (r) => r[2] && String(r[2]).toUpperCase().includes(skuUpper)
       );
     } else if (name) {
-      const nameLower = name.toLowerCase().trim();
+      const nameNorm = normalize(name);
       filtered = data.filter(
-        (r) => r[0] && String(r[0]).toLowerCase().includes(nameLower)
+        (r) => r[0] && normalize(String(r[0])).includes(nameNorm)
       );
     } else if (category) {
-      const catLower = category.toLowerCase().trim();
+      const catNorm = normalize(category);
       filtered = data.filter(
-        (r) => r[1] && String(r[1]).toLowerCase().includes(catLower)
+        (r) => r[1] && normalize(String(r[1])).includes(catNorm)
       );
     }
 
