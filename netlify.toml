@@ -2,7 +2,13 @@
   command = "npm run build"
   publish = "build"
 
-# All routes go to SvelteKit server function (SSR)
+# Exclude Netlify Functions from the SvelteKit catch-all
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# All other routes go to SvelteKit server function (SSR)
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/sveltekit-render"
