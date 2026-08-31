@@ -119,24 +119,15 @@ function detectIntent(message: string): Intent {
     return { type: "faq", query: message };
   }
 
-  // Product category keywords
-  const catKeywords: [string, string][] = [
-    ["timbre", "Timbre"],
-    ["fechador", "Fechador"],
-    ["tampon", "Tampón"],
-    ["dactilar", "Dactilar"],
-    ["tinta", "Tinta"],
-    ["roller", "Roller"],
-    ["set escolar", "Set Escolar"],
-    ["automatico", "Timbre de Goma"],
-    ["manual", "Timbre de Goma"],
-    ["cuadrado", "Timbre de Goma"],
-    ["redondo", "Timbre de Goma"],
-    ["bolsillo", "Timbre de Goma"],
+  // Product name keywords (search by product name in the sheet)
+  const nameKeywords = [
+    "timbre", "fechador", "tampon", "dactilar", "tinta",
+    "roller", "set escolar", "automatico", "manual",
+    "cuadrado", "redondo", "bolsillo",
   ];
-  for (const [keyword, category] of catKeywords) {
-    if (msg.includes(keyword)) {
-      return { type: "catalog", query: category, field: "category" };
+  for (const kw of nameKeywords) {
+    if (msg.includes(kw)) {
+      return { type: "catalog", query: kw, field: "name" };
     }
   }
 
