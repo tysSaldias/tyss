@@ -3,12 +3,10 @@
  *
  * Endpoint único para el chatbot de Kapso.
  * Recibe el mensaje del usuario, detecta la intención, y busca en la sheet
- * de RooterValis (catálogo o FAQ).
+ * de RooterValis (catálogo, FAQ o políticas).
  *
  * POST /.netlify/functions/kapso
  * Body: { "message": "¿Cuánto cuesta el XL10?" }
- *
- * El agente de Kapso llama a esta función via webhook tool.
  */
 
 declare const process: { env: Record<string, string | undefined> };
@@ -97,6 +95,7 @@ const normalize = (s: string) =>
 
 type Intent = { type: "catalog"; query: string; field: "sku" | "name" | "category" }
             | { type: "faq"; query: string }
+            | { type: "policies"; query: string }
             | { type: "general" };
 
 function detectIntent(message: string): Intent {
@@ -108,12 +107,25 @@ function detectIntent(message: string): Intent {
     return { type: "catalog", query: skuMatch[1].replace(/\s/g, ""), field: "sku" };
   }
 
+  // Policy keywords (check BEFORE FAQ to avoid false positives)
+  const policyKeywords = [
+    "garantia", "garantía", "devolucion", "devolución", "retracto",
+    "reclamo", "falla", "defecto", "politica", "política",
+    "condiciones", "requisitos", "seguimiento", "rastrear",
+    "fabricacion", "fabricación", "tiempo de",
+    "proceso de compra", "como compro", "cómo compro",
+    "retiro en tienda", "retirar en tienda",
+  ];
+  if (policyKeywords.some((kw) => msg.includes(kw))) {
+    return { type: "policies", query: message };
+  }
+
   // FAQ keywords
   const faqKeywords = [
-    "envia", "envio", "despacho", "garantia", "devolucion", "pago",
+    "envia", "envio", "despacho", "pago",
     "boleta", "factura", "horario", "ubicacion", "direccion", "sucursal",
-    "contacto", "whatsapp", "telefono", "pedido", "compra", "retiro",
-    "transporte", "starken", "bluexpress", "contra entrega", "transferencia",
+    "contacto", "whatsapp", "telefono",
+    "starken", "bluexpress", "contra entrega", "transferencia",
   ];
   if (faqKeywords.some((kw) => msg.includes(kw))) {
     return { type: "faq", query: message };
@@ -228,7 +240,6 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
 
       const data = rows.slice(1).filter((r) => r.some((v) => v !== null && v !== ""));
 
-      // Search FAQ by matching words from the user message
       const words = normalize(message).split(/\s+/).filter((w) => w.length > 2);
       const matched = data.filter((r) => {
         const fullText = normalize(`${r[0]} ${r[1]} ${r[2]}`);
@@ -239,7 +250,6 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
         return text(200, `No se encontraron FAQ para "${message}".`);
       }
 
-      // Group by category
       const grouped: Record<string, [string | number | null, string | number | null][]> = {};
       for (const row of matched) {
         const cat = String(row[0] || "General");
@@ -251,6 +261,46 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       for (const [cat, items] of Object.entries(grouped)) {
         result += `--- ${cat} ---\n\n`;
         for (const [p, r] of items) result += `P: ${p}\nR: ${r}\n\n`;
+      }
+      return text(200, result.trim());
+    }
+
+    // ── Policies search ──
+    if (intent.type === "policies") {
+      const spreadsheet = await fetchSheet();
+      const polSheet = spreadsheet.sheets?.find(
+        (s) => s.name?.toLowerCase().includes("politic")
+      );
+
+      let cells: Cell[];
+      if (polSheet) {
+        const polData = await fetchSheet(polSheet.id);
+        cells = polData.cells;
+      } else if (spreadsheet.sheets && spreadsheet.sheets.length > 2) {
+        const polData = await fetchSheet(spreadsheet.sheets[2].id);
+        cells = polData.cells;
+      } else {
+        return text(200, "No se encontro la hoja de Politicas.");
+      }
+
+      const rows = cellsToRows(cells);
+      if (rows.length <= 1) return text(200, "No hay politicas disponibles.");
+
+      const data = rows.slice(1).filter((r) => r.some((v) => v !== null && v !== ""));
+
+      const words = normalize(message).split(/\s+/).filter((w) => w.length > 2);
+      const matched = data.filter((r) => {
+        const fullText = normalize(`${r[0]} ${r[1]} ${r[2]}`);
+        return words.some((w) => fullText.includes(w));
+      });
+
+      if (matched.length === 0) {
+        return text(200, `No se encontraron politicas para "${message}".`);
+      }
+
+      let result = `Politicas: ${matched.length} resultado(s)\n\n`;
+      for (const row of matched) {
+        result += `--- ${row[0]} / ${row[1]} ---\n${row[2]}\n\n`;
       }
       return text(200, result.trim());
     }
