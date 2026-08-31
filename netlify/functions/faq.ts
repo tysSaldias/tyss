@@ -79,7 +79,7 @@ async function fetchSheet(sheetId?: string): Promise<SpreadsheetResponse> {
   if (sheetId) url += `?sheetId=${sheetId}`;
 
   const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { "X-API-Key": token },
   });
 
   if (!res.ok) {

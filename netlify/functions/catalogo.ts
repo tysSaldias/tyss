@@ -81,7 +81,7 @@ async function fetchSpreadsheet(): Promise<SpreadsheetResponse> {
 
   const res = await fetch(
     `${ROOTERVALIS_BASE}/api/spreadsheets/${SPREADSHEET_ID}/data`,
-    { headers: { Authorization: `Bearer ${token}` } }
+    { headers: { "X-API-Key": token } }
   );
 
   if (!res.ok) {
