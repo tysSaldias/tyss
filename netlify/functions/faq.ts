@@ -97,14 +97,21 @@ async function fetchSheet(sheetId?: string): Promise<SpreadsheetResponse> {
 function cellsToRows(cells: Cell[]): (string | number | null)[][] {
   if (!cells.length) return [];
 
-  const maxRow = Math.max(...cells.map((c) => c.row));
-  const maxCol = Math.max(...cells.map((c) => c.col));
+  // API returns row/col as strings, normalize to numbers
+  const normalized = cells.map((c) => ({
+    ...c,
+    row: Number(c.row),
+    col: Number(c.col),
+  }));
+
+  const maxRow = Math.max(...normalized.map((c) => c.row));
+  const maxCol = Math.max(...normalized.map((c) => c.col));
   const rows: (string | number | null)[][] = [];
 
   for (let r = 0; r <= maxRow; r++) {
     const row: (string | number | null)[] = [];
     for (let c = 0; c <= maxCol; c++) {
-      const cell = cells.find((c2) => c2.row === r && c2.col === c);
+      const cell = normalized.find((c2) => c2.row === r && c2.col === c);
       row.push(cell?.value ?? null);
     }
     rows.push(row);
