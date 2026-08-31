@@ -95,11 +95,12 @@ async function fetchSpreadsheet(): Promise<SpreadsheetResponse> {
 function cellsToRows(cells: Cell[]): (string | number | null)[][] {
   if (!cells.length) return [];
 
-  // API returns row/col as strings, normalize to numbers
+  // API returns row/col as strings, normalize to numbers and trim values
   const normalized = cells.map((c) => ({
     ...c,
     row: Number(c.row),
     col: Number(c.col),
+    value: typeof c.value === "string" ? c.value.trim() : c.value,
   }));
 
   const maxRow = Math.max(...normalized.map((c) => c.row));
