@@ -148,7 +148,9 @@ function detectIntent(message: string): Intent {
     return { type: "catalog", query: message, field: "name" };
   }
 
-  return { type: "general" };
+  // Last resort: try catalog search with the full message
+  // (handles unknown product names like "test testoso")
+  return { type: "catalog", query: message, field: "name" };
 }
 
 // ─── Formatters ─────────────────────────────────────────────────────────────
