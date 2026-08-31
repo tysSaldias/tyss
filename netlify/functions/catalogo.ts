@@ -2,7 +2,6 @@
  * catalogo — Netlify Function
  *
  * Busqueda de productos en la sheet de RooterValis.
- * Kapso llama a esta funcion via webhook tool.
  *
  * POST /.netlify/functions/catalogo
  * Body: { "sku": "XL10" | "name": "timbre" | "category": "Accesorio" }
@@ -12,10 +11,6 @@ declare const process: { env: Record<string, string | undefined> };
 
 const ROOTERVALIS_BASE = "https://api.rootervalis.com";
 const SPREADSHEET_ID = "c048f7a4-3770-47ee-9ed7-9553bd4b45be";
-
-interface Env {
-  ROOTERVALIS_API_KEY?: string;
-}
 
 interface Cell {
   row: number;
@@ -32,47 +27,52 @@ interface SpreadsheetResponse {
   cells: Cell[];
 }
 
-interface HandlerEvent {
+interface NetlifyEvent {
   httpMethod: string;
   body: string | null;
   headers: Record<string, string>;
 }
 
-interface HandlerContext {
-  waitUntil?: (promise: Promise<unknown>) => void;
+interface NetlifyResponse {
+  statusCode: number;
+  headers: Record<string, string>;
+  body: string;
 }
 
-function json(statusCode: number, body: Record<string, unknown>) {
-  return new Response(JSON.stringify(body), {
-    status: statusCode,
+function json(statusCode: number, body: Record<string, unknown>): NetlifyResponse {
+  return {
+    statusCode,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
-  });
+    body: JSON.stringify(body),
+  };
 }
 
-function text(statusCode: number, content: string) {
-  return new Response(content, {
-    status: statusCode,
+function text(statusCode: number, content: string): NetlifyResponse {
+  return {
+    statusCode,
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
-  });
+    body: content,
+  };
 }
 
-function cors() {
-  return new Response(null, {
-    status: 204,
+function cors(): NetlifyResponse {
+  return {
+    statusCode: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
     },
-  });
+    body: "",
+  };
 }
 
 async function fetchSpreadsheet(): Promise<SpreadsheetResponse> {
@@ -131,17 +131,14 @@ function formatProduct(row: (string | number | null)[]): string {
   return out;
 }
 
-export default async function handler(
-  req: HandlerEvent,
-  _ctx: HandlerContext
-): Promise<Response> {
-  if (req.httpMethod === "OPTIONS") return cors();
-  if (req.httpMethod !== "POST") {
+exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
+  if (event.httpMethod === "OPTIONS") return cors();
+  if (event.httpMethod !== "POST") {
     return json(405, { error: "Method not allowed. Use POST." });
   }
 
   try {
-    const body = JSON.parse(req.body || "{}");
+    const body = JSON.parse(event.body || "{}");
     const { sku, name, category } = body;
 
     if (!sku && !name && !category) {
@@ -200,4 +197,4 @@ export default async function handler(
     console.error("catalogo error:", message);
     return json(500, { error: "Error al obtener catalogo", detail: message });
   }
-}
+};

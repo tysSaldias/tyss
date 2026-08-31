@@ -2,7 +2,6 @@
  * faq — Netlify Function
  *
  * Busqueda de FAQ en la sheet de RooterValis.
- * Kapso llama a esta funcion via webhook tool.
  *
  * POST /.netlify/functions/faq
  * Body: { "category": "Envios" }  (opcional — sin category devuelve todas)
@@ -28,47 +27,52 @@ interface SpreadsheetResponse {
   cells: Cell[];
 }
 
-interface HandlerEvent {
+interface NetlifyEvent {
   httpMethod: string;
   body: string | null;
   headers: Record<string, string>;
 }
 
-interface HandlerContext {
-  waitUntil?: (promise: Promise<unknown>) => void;
+interface NetlifyResponse {
+  statusCode: number;
+  headers: Record<string, string>;
+  body: string;
 }
 
-function text(statusCode: number, content: string) {
-  return new Response(content, {
-    status: statusCode,
+function text(statusCode: number, content: string): NetlifyResponse {
+  return {
+    statusCode,
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
-  });
+    body: content,
+  };
 }
 
-function json(statusCode: number, body: Record<string, unknown>) {
-  return new Response(JSON.stringify(body), {
-    status: statusCode,
+function json(statusCode: number, body: Record<string, unknown>): NetlifyResponse {
+  return {
+    statusCode,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
-  });
+    body: JSON.stringify(body),
+  };
 }
 
-function cors() {
-  return new Response(null, {
-    status: 204,
+function cors(): NetlifyResponse {
+  return {
+    statusCode: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
     },
-  });
+    body: "",
+  };
 }
 
 async function fetchSheet(sheetId?: string): Promise<SpreadsheetResponse> {
@@ -109,17 +113,14 @@ function cellsToRows(cells: Cell[]): (string | number | null)[][] {
   return rows;
 }
 
-export default async function handler(
-  req: HandlerEvent,
-  _ctx: HandlerContext
-): Promise<Response> {
-  if (req.httpMethod === "OPTIONS") return cors();
-  if (req.httpMethod !== "POST") {
+exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
+  if (event.httpMethod === "OPTIONS") return cors();
+  if (event.httpMethod !== "POST") {
     return json(405, { error: "Method not allowed. Use POST." });
   }
 
   try {
-    const body = JSON.parse(req.body || "{}");
+    const body = JSON.parse(event.body || "{}");
     const { category } = body;
 
     const spreadsheet = await fetchSheet();
@@ -190,4 +191,4 @@ export default async function handler(
     console.error("faq error:", message);
     return json(500, { error: "Error al obtener FAQ", detail: message });
   }
-}
+};
