@@ -269,7 +269,7 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
     if (intent.type === "policies") {
       const spreadsheet = await fetchSheet();
       const polSheet = spreadsheet.sheets?.find(
-        (s) => s.name?.toLowerCase().includes("politic")
+        (s) => normalize(s.name || "").includes("politic")
       );
 
       let cells: Cell[];
