@@ -19,17 +19,24 @@ exports.handler = async (event) => {
 
     const data = await res.json();
 
-    // Return first 10 cells for debugging
+    // Find SKU cells and show their exact values + char codes
+    const skuCells = data.cells.filter(
+      (c) => c.row === "1" || c.row === 1 // header + first data row
+    );
+
+    const skuValues = data.cells
+      .filter((c) => (c.row === "1" || c.row === 1) && (c.col === "2" || c.col === 2))
+      .map((c) => ({
+        value: c.value,
+        type: typeof c.value,
+        charCodes: String(c.value).split("").map((ch) => ch.charCodeAt(0)),
+        length: String(c.value).length,
+      }));
+
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        status: res.status,
-        sheetCount: data.sheets?.length,
-        sheets: data.sheets,
-        cellCount: data.cells?.length,
-        firstCells: data.cells?.slice(0, 15),
-      }),
+      body: JSON.stringify({ skuValues }),
     };
   } catch (err) {
     return {
