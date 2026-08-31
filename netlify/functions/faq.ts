@@ -97,7 +97,6 @@ async function fetchSheet(sheetId?: string): Promise<SpreadsheetResponse> {
 function cellsToRows(cells: Cell[]): (string | number | null)[][] {
   if (!cells.length) return [];
 
-  // API returns row/col as strings, normalize to numbers and trim values
   const normalized = cells.map((c) => ({
     ...c,
     row: Number(c.row),
@@ -121,6 +120,9 @@ function cellsToRows(cells: Cell[]): (string | number | null)[][] {
   return rows;
 }
 
+const normalize = (s: string) =>
+  s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
 exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
   if (event.httpMethod === "OPTIONS") return cors();
   if (event.httpMethod !== "POST") {
@@ -133,7 +135,6 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
 
     const spreadsheet = await fetchSheet();
 
-    // Find FAQ sheet by name
     const faqSheet = spreadsheet.sheets?.find(
       (s) => s.name?.toLowerCase() === "faq"
     );
@@ -143,7 +144,6 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       const faqData = await fetchSheet(faqSheet.id);
       cells = faqData.cells;
     } else if (spreadsheet.sheets && spreadsheet.sheets.length > 1) {
-      // Fallback: second sheet
       const faqData = await fetchSheet(spreadsheet.sheets[1].id);
       cells = faqData.cells;
     } else {
@@ -159,10 +159,19 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       .slice(1)
       .filter((r) => r.some((v) => v !== null && v !== ""));
 
+    // Debug: show raw categories
+    if (category === "_debug") {
+      const cats = data.map((r) => ({
+        raw: String(r[0]),
+        normalized: normalize(String(r[0])),
+        charCodes: String(r[0])
+          .split("")
+          .map((ch) => ch.charCodeAt(0)),
+      }));
+      return text(200, JSON.stringify({ categories: cats.slice(0, 10) }, null, 2));
+    }
+
     let filtered = data;
-    // Normalize for accent-insensitive search
-    const normalize = (s: string) =>
-      s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 
     if (category) {
       const catNorm = normalize(category);
@@ -180,7 +189,6 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       );
     }
 
-    // Group by category
     const grouped: Record<string, [string | number | null, string | number | null][]> = {};
     for (const row of filtered) {
       const cat = row[0] || "General";
