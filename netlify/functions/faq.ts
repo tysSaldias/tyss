@@ -161,14 +161,13 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
 
     // Debug: show raw categories
     if (category === "_debug") {
-      const cats = data.map((r) => ({
-        raw: String(r[0]),
-        normalized: normalize(String(r[0])),
-        charCodes: String(r[0])
-          .split("")
-          .map((ch) => ch.charCodeAt(0)),
+      const uniqueCats = [...new Set(data.map((r) => String(r[0])))];
+      const catCounts = uniqueCats.map((c) => ({
+        category: c,
+        normalized: normalize(c),
+        count: data.filter((r) => String(r[0]) === c).length,
       }));
-      return text(200, JSON.stringify({ categories: cats.slice(0, 10) }, null, 2));
+      return text(200, JSON.stringify({ total: data.length, catCounts }, null, 2));
     }
 
     let filtered = data;
