@@ -1,12 +1,12 @@
 /**
- * kapso — Netlify Function
+ * kapso - Netlify Function
  *
- * Endpoint único para el chatbot de Kapso.
- * Recibe el mensaje del usuario, detecta la intención, y busca en la sheet
- * de RooterValis (catálogo, FAQ o políticas).
+ * Endpoint for the Kapso WhatsApp chatbot.
+ * Receives the user message, detects intent, and searches RooterValis sheets
+ * (catalog, FAQ, policies, or stores).
  *
  * POST /.netlify/functions/kapso
- * Body: { "message": "¿Cuánto cuesta el XL10?" }
+ * Body: { "message": "..." }
  */
 
 declare const process: { env: Record<string, string | undefined> };
@@ -96,18 +96,19 @@ const normalize = (s: string) =>
 type Intent = { type: "catalog"; query: string; field: "sku" | "name" | "category" }
             | { type: "faq"; query: string }
             | { type: "policies"; query: string }
+            | { type: "stores"; query: string }
             | { type: "general" };
 
 function detectIntent(message: string): Intent {
   const msg = normalize(message);
 
-  // SKU pattern: XL10, MAN40, TAM70, D233, etc.
+  // SKU pattern
   const skuMatch = message.match(/\b(XL\s*\d+|MAN\s*\d+|TAM\s*\d+|D\d+|BOLSILLO|TINTA\d*)\b/i);
   if (skuMatch) {
     return { type: "catalog", query: skuMatch[1].replace(/\s/g, ""), field: "sku" };
   }
 
-  // Policy keywords (check BEFORE FAQ to avoid false positives)
+  // Policy keywords (check BEFORE FAQ)
   const policyKeywords = [
     "garantia", "garantía", "devolucion", "devolución", "retracto",
     "reclamo", "falla", "defecto", "politica", "política",
@@ -120,10 +121,20 @@ function detectIntent(message: string): Intent {
     return { type: "policies", query: message };
   }
 
+  // Store keywords
+  const storeKeywords = [
+    "sucursal", "tienda", "local", "ubicacion", "direccion",
+    "donde estan", "donde queda", "donde quedan", "donde esta",
+    "ir a la tienda", "visitar", "horario",
+  ];
+  if (storeKeywords.some((kw) => msg.includes(kw))) {
+    return { type: "stores", query: message };
+  }
+
   // FAQ keywords
   const faqKeywords = [
     "envia", "envio", "despacho", "pago",
-    "boleta", "factura", "horario", "ubicacion", "direccion", "sucursal",
+    "boleta", "factura",
     "contacto", "whatsapp", "telefono",
     "starken", "bluexpress", "contra entrega", "transferencia",
   ];
@@ -131,7 +142,7 @@ function detectIntent(message: string): Intent {
     return { type: "faq", query: message };
   }
 
-  // Product name keywords (search by product name in the sheet)
+  // Product name keywords
   const nameKeywords = [
     "timbre", "fechador", "tampon", "dactilar", "tinta",
     "roller", "set escolar", "automatico", "manual",
@@ -148,8 +159,7 @@ function detectIntent(message: string): Intent {
     return { type: "catalog", query: message, field: "name" };
   }
 
-  // Last resort: try catalog search with the full message
-  // (handles unknown product names like "test testoso")
+  // Last resort: try catalog search
   return { type: "catalog", query: message, field: "name" };
 }
 
@@ -303,6 +313,41 @@ exports.handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => {
       let result = `Politicas: ${matched.length} resultado(s)\n\n`;
       for (const row of matched) {
         result += `--- ${row[0]} / ${row[1]} ---\n${row[2]}\n\n`;
+      }
+      return text(200, result.trim());
+    }
+
+    // ── Stores search ──
+    if (intent.type === "stores") {
+      const spreadsheet = await fetchSheet();
+      const storeSheet = spreadsheet.sheets?.find(
+        (s) => normalize(s.name || "").includes("sucursal") || normalize(s.name || "").includes("tienda") || normalize(s.name || "").includes("local")
+      );
+
+      let cells: Cell[];
+      if (storeSheet) {
+        const storeData = await fetchSheet(storeSheet.id);
+        cells = storeData.cells;
+      } else if (spreadsheet.sheets && spreadsheet.sheets.length > 3) {
+        const storeData = await fetchSheet(spreadsheet.sheets[3].id);
+        cells = storeData.cells;
+      } else {
+        return text(200, "No se encontro la hoja de Sucursales.");
+      }
+
+      const rows = cellsToRows(cells);
+      if (rows.length <= 1) return text(200, "No hay informacion de sucursales.");
+
+      const data = rows.slice(1).filter((r) => r.some((v) => v !== null && v !== ""));
+
+      let result = `Sucursales:\n\n`;
+      for (const row of data) {
+        result += `${row[0]}\n`;
+        result += `Tipo: ${row[1] || "N/A"}\n`;
+        result += `Direccion: ${row[2] || "N/A"}\n`;
+        result += `Horario: ${row[3] || "N/A"}\n`;
+        if (row[4]) result += `Nota: ${row[4]}\n`;
+        result += `\n`;
       }
       return text(200, result.trim());
     }
