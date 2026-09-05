@@ -1,12 +1,20 @@
 <script lang="ts">
-	import { products, getProductsByCategory } from '$lib/data/products';
+	import type { Product } from '$lib/types';
 	import CatalogoGrid from '$lib/components/catalog/CatalogoGrid.svelte';
 	import FiltroCategoria from '$lib/components/catalog/FiltroCategoria.svelte';
+
+	let { data } = $props();
+
+	const allProducts = $derived(data.products);
 
 	let activeCategory = $state('todos');
 	let sortBy = $state('recomendados');
 
-	const filtered = $derived(getProductsByCategory(activeCategory));
+	const filtered = $derived(
+		activeCategory === 'todos' || activeCategory === ''
+			? allProducts.filter((p) => p.isActive)
+			: allProducts.filter((p) => p.isActive && p.category === activeCategory)
+	);
 
 	const sorted = $derived(() => {
 		const items = [...filtered];

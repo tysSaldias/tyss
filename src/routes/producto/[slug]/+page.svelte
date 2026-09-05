@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getProductBySlug, priceFormat } from '$lib/data/products';
+	import { priceFormat } from '$lib/data/products';
 	import { INSTAGRAM_URL } from '$lib/data/site';
 	import { addToCart } from '$lib/stores/cart.svelte';
 	import ConfiguradorTimbre from '$lib/components/configurator/ConfiguradorTimbre.svelte';
@@ -12,7 +12,7 @@
 
 	let { params, data } = $props();
 
-	const product = $derived(getProductBySlug(params.slug));
+	const product = $derived(data.product);
 	const reviews = $derived(data.reviews);
 	const stats = $derived(data.stats);
 

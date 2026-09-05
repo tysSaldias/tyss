@@ -2,6 +2,10 @@ import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { createAdminClient } from '$lib/utils/supabase-admin';
 import { PUBLIC_REVIEWS_ENABLED } from '$env/static/public';
+import { fetchDynamicPrices, getProductWithDynamicPrices } from '$lib/utils/prices';
+import { getProductBySlug } from '$lib/data/products';
+
+declare const process: { env: Record<string, string | undefined> };
 
 // Helper to fetch user metadata (display name, avatar) for a list of user IDs
 async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { name: string; avatar: string }>> {
@@ -37,9 +41,21 @@ async function fetchUserMetadata(userIds: string[]): Promise<Record<string, { na
 }
 
 export const load: PageServerLoad = async ({ params, locals }) => {
+	// Fetch dynamic prices from RooterValis
+	const apiKey = process.env.ROOTERVALIS_API_KEY;
+	let product = getProductBySlug(params.slug);
+
+	if (apiKey && product && !product.comingSoon) {
+		const priceMap = await fetchDynamicPrices(apiKey);
+		if (priceMap) {
+			product = getProductWithDynamicPrices(params.slug, priceMap) ?? product;
+		}
+	}
+
 	// Feature flag check
 	if (PUBLIC_REVIEWS_ENABLED !== 'true') {
 		return {
+			product,
 			reviews: [],
 			stats: {
 				product_id: params.slug,
@@ -90,12 +106,14 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		}));
 
 		return {
+			product,
 			reviews: enrichedReviews,
 			stats: productStats
 		};
 	}
 
 	return {
+		product,
 		reviews: reviews ?? [],
 		stats: productStats
 	};
