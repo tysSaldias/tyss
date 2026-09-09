@@ -41,10 +41,10 @@
 	<title>Despacho y Envíos | Timbres y Sellos Saldias</title>
 	<meta
 		name="description"
-		content="Despacho gratis en Quilpué, Villa Alemana y Belloto, envíos a todo Chile por Starken o Bluexpress y retiro en tienda. Conoce tiempos de fabricación y envío."
+		content="Despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Envíos por pagar en Viña del Mar, Valparaíso, Limache, Concón y todo Chile. Envío gratis sobre $150.000 + IVA. Retiro en tienda."
 	/>
 	<meta property="og:title" content="Despacho y Envíos | Timbres y Sellos Saldias" />
-	<meta property="og:description" content="Despacho gratis en la zona, envíos a todo Chile por Starken o Bluexpress y retiro en nuestras sucursales de Villa Alemana." />
+	<meta property="og:description" content="Despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Envíos por pagar en Viña del Mar, Valparaíso, Limache, Concón y todo Chile. Envío gratis sobre $150.000 + IVA." />
 	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/despacho" />
 </svelte:head>
 
@@ -54,8 +54,8 @@
 		<h1 class="text-3xl font-bold text-white sm:text-4xl">Despacho y Envíos</h1>
 		<p class="mt-4 leading-relaxed text-gray-400">
 			Toda la información sobre cómo recibes tu pedido en un solo lugar: despacho gratis en
-			Quilpué, Villa Alemana y Belloto, envíos a todo Chile por Starken o Bluexpress, y retiro
-			presencial en nuestras sucursales de Villa Alemana.
+			Quilpué, Villa Alemana, Belloto y Peña Blanca, envíos por pagar en Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores, envío gratis a todo Chile sobre
+			$150.000 + IVA, y retiro presencial en nuestras sucursales de Villa Alemana.
 		</p>
 	</div>
 
@@ -82,12 +82,12 @@
 			</span>
 			<div>
 				<h2 class="text-xl font-bold text-white sm:text-2xl">Despacho gratis en la zona</h2>
-				<p class="text-sm text-gray-400">Sin costo en Quilpué, Villa Alemana y Belloto.</p>
+				<p class="text-sm text-gray-400">Sin costo en Quilpué, Villa Alemana, Belloto y Peña Blanca.</p>
 			</div>
 		</div>
 		<div class="rounded-xl bg-brand-card p-6">
 			<p class="leading-relaxed text-gray-400">
-				Si estás en Quilpué, Villa Alemana o Belloto, te llevamos tu pedido
+				Si estás en Quilpué, Villa Alemana, Belloto o Peña Blanca, te llevamos tu pedido
 				<strong class="text-gray-200">sin costo</strong>. Coordina el despacho por
 				<a
 					href={WHATSAPP_LINK}
@@ -100,7 +100,7 @@
 		</div>
 	</section>
 
-	<!-- Envíos a todo Chile -->
+	<!-- Envíos por pagar en la zona -->
 	<section id="envios-chile" class="mx-auto mt-14 max-w-4xl scroll-mt-24">
 		<div class="mb-6 flex items-center gap-3">
 			<span
@@ -110,21 +110,37 @@
 				📦
 			</span>
 			<div>
-				<h2 class="text-xl font-bold text-white sm:text-2xl">Envíos a todo Chile</h2>
-				<p class="text-sm text-gray-400">Por Starken o Bluexpress, con pago contra entrega.</p>
+				<h2 class="text-xl font-bold text-white sm:text-2xl">Envíos por pagar en la zona</h2>
+				<p class="text-sm text-gray-400">Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores.</p>
 			</div>
 		</div>
 		<div class="rounded-xl bg-brand-card p-6">
 			<p class="leading-relaxed text-gray-400">
+				Para localidades como <strong class="text-gray-200">Viña del Mar, Valparaíso, Limache, Concón, Curauma</strong>
+				y demás comunas de la zona, el despacho se realiza en modalidad
+				<strong class="text-gray-200">por pagar</strong> (contra entrega): abonas el valor del envío al
+				recibir tu pedido, salvo que coordines el pago anticipado con nosotros.
+			</p>
+			<p class="mt-3 leading-relaxed text-gray-400">
 				Despachamos a todo Chile a través de <strong class="text-gray-200">Starken</strong> o
-				<strong class="text-gray-200">Bluexpress</strong>. El envío se realiza en modalidad
-				<strong class="text-gray-200">por pagar</strong> (contra entrega): abonas el valor al recibir tu
-				pedido, salvo que coordines el pago anticipado con nosotros.
+				<strong class="text-gray-200">Bluexpress</strong>. El tiempo de envío depende del destino y es el que
+				indique la empresa de transporte al coordinar la entrega.
 			</p>
-			<p class="mt-3 text-sm text-gray-400">
-				El tiempo de envío depende del destino y es el que indique la empresa de transporte al
-				coordinar la entrega.
-			</p>
+		</div>
+
+		<!-- Envío gratis a todo Chile por compras sobre $150.000 -->
+		<div class="mt-6 rounded-xl border border-brand-yellow/30 bg-brand-yellow/10 p-6">
+			<div class="flex items-start gap-3">
+				<span class="text-2xl" aria-hidden="true">🎉</span>
+				<div>
+					<h3 class="text-lg font-semibold text-white">Envío gratis a todo Chile</h3>
+					<p class="mt-1 leading-relaxed text-gray-400">
+						En compras sobre <strong class="text-brand-yellow">$150.000 + IVA</strong>, el envío a cualquier
+						punto de Chile es <strong class="text-brand-yellow">totalmente gratis</strong>. Aprovecha esta
+						promoción y recibe tu pedido sin costo de despacho.
+					</p>
+				</div>
+			</div>
 		</div>
 	</section>
 

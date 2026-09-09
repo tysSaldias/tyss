@@ -47,6 +47,10 @@
 		if (!review.comment || review.comment.trim() === '') {
 			return false;
 		}
+		// Filtrar reviews de ejemplo de Featurable
+		if (review.comment.toUpperCase().includes('EXAMPLE REVIEW')) {
+			return false;
+		}
 		return true;
 	}
 </script>

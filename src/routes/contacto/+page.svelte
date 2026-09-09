@@ -35,7 +35,7 @@
 
 <svelte:head>
 	<title>Contacto | Timbres y Sellos Saldias</title>
-	<meta name="description" content="Contáctanos para cotizar tu timbre personalizado o sello 3D. Estamos en Quilpué, Villa Alemana y Belloto. Responde rápido por WhatsApp." />
+	<meta name="description" content="Contáctanos para cotizar tu timbre personalizado o sello 3D. Estamos en Quilpué, Villa Alemana, Belloto y Peña Blanca. Responde rápido por WhatsApp." />
 	<meta property="og:title" content="Contacto | Timbres y Sellos Saldias" />
 	<meta property="og:description" content="Contáctanos para cotizar tu timbre personalizado o sello 3D." />
 	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app/contacto" />
@@ -165,7 +165,7 @@
 					<ul class="mt-3 space-y-3 text-sm text-gray-400">
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">🚚</span>
-							<span><strong class="text-gray-200">Despacho gratis</strong> en Quilpué, Villa Alemana y Belloto</span>
+							<span><strong class="text-gray-200">Despacho gratis</strong> en Quilpué, Villa Alemana, Belloto y Peña Blanca</span>
 						</li>
 						<li class="flex items-start gap-2">
 							<span class="mt-0.5">📦</span>

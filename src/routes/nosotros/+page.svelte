@@ -29,7 +29,7 @@
 				el cuidado que merece, de principio a fin.
 			</p>
 			<p>
-				Atendemos todo Quilpué, Villa Alemana y Belloto con despacho gratis, y
+				Atendemos todo Quilpué, Villa Alemana, Belloto y Peña Blanca con despacho gratis, y
 				realizamos envíos a toda Chile por transferencia o factura.
 			</p>
 		</div>
@@ -75,7 +75,7 @@
 				</div>
 				<h3 class="font-semibold text-white">Despacho Gratis</h3>
 				<p class="mt-2 text-sm text-gray-400">
-					Sin costo en Quilpué, Villa Alemana y Belloto. Envíos a todo Chile.
+					Sin costo en Quilpué, Villa Alemana, Belloto y Peña Blanca. Envíos a todo Chile.
 				</p>
 			</div>
 		</div>

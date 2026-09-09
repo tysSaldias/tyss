@@ -19,7 +19,7 @@
 			</h1>
 			<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-gray-300 sm:text-xl lg:mx-0">
 				Timbres personalizados, sellos 3D y fechadores importados. Calidad artesanal para tu
-				negocio en Quilpué, Villa Alemana y Belloto.
+				negocio en Quilpué, Villa Alemana, Belloto y Peña Blanca.
 			</p>
 			<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
 				<a

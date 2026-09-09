@@ -2,7 +2,7 @@
 	<div class="mx-auto flex items-center justify-center gap-3 px-4 py-4 sm:py-5">
 		<span class="text-2xl" aria-hidden="true">🚚</span>
 		<p class="text-center text-sm font-semibold text-brand-yellow sm:text-base">
-			Despacho gratis en Quilpué, Belloto y Villa Alemana
+			Despacho gratis en Quilpué, Belloto, Villa Alemana y Peña Blanca
 		</p>
 	</div>
 </section>

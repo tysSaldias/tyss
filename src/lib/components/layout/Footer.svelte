@@ -84,7 +84,7 @@
 				</ul>
 				<div class="mt-4 rounded-lg bg-brand-card p-3">
 					<p class="text-xs font-medium text-brand-yellow">
-						🚚 Despacho gratis en Quilpué, Belloto y Villa Alemana
+						🚚 Despacho gratis en Quilpué, Belloto, Villa Alemana y Peña Blanca
 					</p>
 				</div>
 			</div>

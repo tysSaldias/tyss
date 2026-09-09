@@ -9,9 +9,9 @@
 
 <svelte:head>
 	<title>Timbres y Sellos Saldias | Timbres y Sellos Personalizados en Quilpué</title>
-	<meta name="description" content="Timbres personalizados, sellos 3D y fechadores importados en Quilpué, Villa Alemana y Belloto. Calidad artesanal para tu negocio. ¡Cotiza por WhatsApp!" />
+	<meta name="description" content="Timbres personalizados, sellos 3D y fechadores importados en Quilpué, Villa Alemana, Belloto y Peña Blanca. Calidad artesanal para tu negocio. ¡Cotiza por WhatsApp!" />
 	<meta property="og:title" content="Timbres y Sellos Saldias | Timbres y Sellos Personalizados" />
-	<meta property="og:description" content="Timbres personalizados, sellos 3D y fechadores importados en Quilpué, Villa Alemana y Belloto." />
+	<meta property="og:description" content="Timbres personalizados, sellos 3D y fechadores importados en Quilpué, Villa Alemana, Belloto y Peña Blanca." />
 	<meta property="og:url" content="https://timbres-y-sellos-saldias.netlify.app" />
 </svelte:head>
 

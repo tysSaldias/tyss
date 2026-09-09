@@ -43,7 +43,7 @@
 				},
 				{
 					q: '¿Atienden en todo Chile?',
-					a: 'Sí. Realizamos envíos a todo Chile por Starken o Bluexpress y ofrecemos despacho gratis en Quilpué, Villa Alemana y Belloto. Puedes hacer tu pedido desde cualquier región y te lo enviamos hasta tu domicilio.'
+					a: 'Sí. Realizamos envíos a todo Chile por Starken o Bluexpress. Ofrecemos despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Para Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores, el envío es por pagar. ¡Y en compras sobre $150.000 + IVA, el envío a todo Chile es gratis!'
 				},
 				{
 					q: '¿Cómo puedo contactarlos?',
@@ -87,7 +87,7 @@
 				},
 				{
 					q: '¿Atienden en Viña del Mar, Valparaíso o Quilpué?',
-					a: 'Sí, atendemos a clientes de toda la Región de Valparaíso. Ofrecemos despacho gratis en Quilpué, Villa Alemana y Belloto, y envíos por Starken o Bluexpress a Viña del Mar, Valparaíso y todo Chile.'
+					a: 'Sí, atendemos a clientes de toda la Región de Valparaíso. Ofrecemos despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Para Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores, el envío es por pagar. Enviamos a todo Chile por Starken o Bluexpress.'
 				},
 				{
 					q: '¿Necesito pedir hora para visitar la tienda?',
@@ -127,7 +127,7 @@
 				},
 				{
 					q: '¿Tienen despacho gratis?',
-					a: 'Sí, el despacho es gratis en Quilpué, Villa Alemana y Belloto. Para el resto de Chile, enviamos por Starken o Bluexpress según la comuna de destino.'
+					a: 'Sí, el despacho es gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Para Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores, el envío es por pagar. Para el resto de Chile, enviamos por Starken o Bluexpress. ¡Y en compras sobre $150.000 + IVA, el envío es gratis a todo Chile!'
 				}
 			]
 		},
@@ -299,7 +299,7 @@
 			items: [
 				{
 					q: '¿Por qué elegir Timbres y Sellos Saldias?',
-					a: `Porque somos un negocio familiar con fabricación artesanal en la Región de Valparaíso: trabajamos con materiales de calidad, revisamos cada timbre antes de entregarlo y te atendemos de forma personalizada por WhatsApp, con despacho gratis en Quilpué, Villa Alemana y Belloto. Conoce más en nuestra página de ${internalLink('/por-que-elegirnos', 'por qué elegirnos')}.`
+					a: `Porque somos un negocio familiar con fabricación artesanal en la Región de Valparaíso: trabajamos con materiales de calidad, revisamos cada timbre antes de entregarlo y te atendemos de forma personalizada por WhatsApp, con despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Conoce más en nuestra página de ${internalLink('/por-que-elegirnos', 'por qué elegirnos')}.`
 				},
 				{
 					q: '¿Qué diferencia a Timbres y Sellos Saldias?',

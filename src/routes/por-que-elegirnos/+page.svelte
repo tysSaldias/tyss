@@ -29,7 +29,7 @@
 			icon: '🚚',
 			title: 'Despacho gratis en la zona y envíos a todo Chile',
 			description:
-				'Despacho gratis en Quilpué, Villa Alemana y Belloto, y envíos a todo Chile por Starken o Bluexpress, con pago contra entrega. Tu pedido llega donde lo necesites.'
+				'Despacho gratis en Quilpué, Villa Alemana, Belloto y Peña Blanca. Envíos por pagar en Viña del Mar, Valparaíso, Limache, Concón, Curauma y alrededores. ¡Y envío gratis a todo Chile en compras sobre $150.000 + IVA! Tu pedido llega donde lo necesites.'
 		},
 		{
 			icon: '⚖️',
