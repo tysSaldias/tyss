@@ -120,7 +120,7 @@ export function addToCart(line: CartLine): void {
 	if (existing) {
 		existing.quantity += 1;
 	} else {
-		items.push({ ...line, quantity: 1, selected: false });
+		items.push({ ...line, quantity: 1, selected: true });
 	}
 	persist();
 	fireOpenSheet();
