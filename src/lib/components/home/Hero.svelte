@@ -30,60 +30,23 @@
 		opts={{ loop: true, align: 'start' }}
 		plugins={[autoplay]}
 	>
-		<Carousel.Content class="ms-0 h-[70dvh] min-h-[480px] max-h-[720px]">
+		<!-- Native aspect ratio (1608:934) so full images fit without cropping -->
+		<Carousel.Content class="ms-0 aspect-[1608/934] w-full max-h-[85dvh]">
 			{#each images as src, i (src)}
 				<Carousel.Item class="basis-full ps-0">
 					<div class="relative h-full w-full overflow-hidden">
 						<img
 							src={src}
 							alt={`Banner Timbres y Sellos Saldias ${i + 1}`}
-							class="h-full w-full object-cover"
+							class="h-full w-full object-contain"
 							loading={i === 0 ? 'eager' : 'lazy'}
-							width="1600"
-							height="900"
+							width="1608"
+							height="934"
 						/>
-						<!-- Dark overlay for readability -->
-						<div
-							class="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/50 to-transparent"
-						></div>
 					</div>
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-
-		<!-- Overlay text + CTAs -->
-		<div class="pointer-events-none absolute inset-0 flex items-center">
-			<div class="mx-auto w-full max-w-7xl px-4 sm:px-6">
-				<div class="max-w-2xl">
-					<h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-						Timbres y Sellos
-						<br />
-						<span class="text-brand-yellow">Saldias</span>
-					</h1>
-					<p class="mt-4 max-w-xl text-lg leading-relaxed text-gray-300 sm:text-xl">
-						Timbres personalizados, sellos 3D y fechadores importados. Calidad artesanal para
-						tu negocio en Quilpué, Villa Alemana, Belloto y Peña Blanca.
-					</p>
-					<div class="pointer-events-auto mt-8 flex flex-col items-start gap-4 sm:flex-row">
-						<a
-							href="/catalogo"
-							class="inline-flex items-center gap-2 rounded-lg bg-brand-purple px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-purple/90 hover:shadow-lg hover:shadow-brand-purple/25"
-						>
-							Ver Catálogo
-							<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-							</svg>
-						</a>
-						<a
-							href="/contacto"
-							class="inline-flex items-center gap-2 rounded-lg border border-gray-600 bg-gray-950/40 px-8 py-3 text-sm font-semibold text-gray-200 transition-all hover:border-brand-yellow hover:text-brand-yellow"
-						>
-							Contáctanos
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Prev/Next -->
 		<Carousel.Previous class="start-4 md:start-8" variant="outline" size="icon-lg" />
