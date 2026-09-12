@@ -30,8 +30,8 @@
 		opts={{ loop: true, align: 'start' }}
 		plugins={[autoplay]}
 	>
-		<!-- Native aspect ratio (1608:934) so full images fit without cropping -->
-		<Carousel.Content class="ms-0 aspect-[1608/934] w-full max-h-[85dvh]">
+		<!-- Native aspect ratio (1608x864-ish) so full images fit without cropping -->
+		<Carousel.Content class="ms-0 aspect-[1608/864] w-full max-h-[85dvh]">
 			{#each images as src, i (src)}
 				<Carousel.Item class="basis-full ps-0">
 					<div class="relative h-full w-full overflow-hidden">
@@ -41,7 +41,7 @@
 							class="h-full w-full object-contain"
 							loading={i === 0 ? 'eager' : 'lazy'}
 							width="1608"
-							height="934"
+							height="858"
 						/>
 					</div>
 				</Carousel.Item>
