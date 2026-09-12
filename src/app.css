@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 @theme {
 	--color-brand-purple: #5B21B6;
@@ -8,11 +9,56 @@
 	--color-brand-border: rgba(55, 65, 81, 0.5);
 }
 
-/* Base global styles */
-:root {
-	color-scheme: dark;
+/* shadcn-svelte theme tokens, mapped to the site's dark palette */
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
 }
 
+:root {
+	color-scheme: dark;
+	--radius: 0.625rem;
+	--background: #111827;
+	--foreground: #e5e7eb;
+	--card: #111827;
+	--card-foreground: #e5e7eb;
+	--popover: #030712;
+	--popover-foreground: #e5e7eb;
+	--primary: #5B21B6;
+	--primary-foreground: #ffffff;
+	--secondary: #1f2937;
+	--secondary-foreground: #f3f4f6;
+	--muted: #1f2937;
+	--muted-foreground: #9ca3af;
+	--accent: #1f2937;
+	--accent-foreground: #ffffff;
+	--destructive: #ef4444;
+	--border: #374151;
+	--input: #374151;
+	--ring: #5B21B6;
+}
+
+/* Base global styles */
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
