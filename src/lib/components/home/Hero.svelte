@@ -1,6 +1,6 @@
 <script lang="ts">
-	const VIDEO_SRC = '/assets/hero/video-tyss2.mp4';
-	const POSTER_SRC = '/assets/hero/video-tyss2-poster.jpg';
+	const VIDEO_SRC = '/assets/hero/video-tyss3.mp4';
+	const POSTER_SRC = '/assets/hero/video-tyss3-poster.jpg';
 </script>
 
 <section class="relative overflow-hidden bg-brand-card">
